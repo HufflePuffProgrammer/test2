@@ -1,0 +1,39 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Spiderman: Far from home",
+      "desc": "Our friendly neighborhood Super Hero decides to join his best friends on a European vacation.",
+      "writer": "Chris McKenna",
+      "director": "Jon Watts"
+    },
+    {
+      "id": 2,
+      "title": "The Edge of 17",
+      "desc": "High-school life gets even more unbearable for Nadine when her best friend, Krista, starts dating her older brother.",
+      "writer": "Kelly Fremon Craig",
+      "director": "Kelly Craig"
+    },
+    {
+      "id": 3,
+      "title": "The Domestics",
+      "desc": "In the weeks following an apocalyptic event, a husband and wife",
+      "writer": "Mike P. Nelson",
+      "director": "Mike Nelson"
+    },
+    {
+      "id": 4,
+      "title": "Star Wars: Rise of the Skywalkers",
+      "desc": "A long Time ago...",
+      "writer": "JJ Abrahms",
+      "director": "JJ Abrahms"
+    },
+    {
+      "id": 5,
+      "title": "Star Wars: Rise of the Skywalkers",
+      "desc": "A long Time ago...",
+      "writer": "JJ Abrahms",
+      "director": "JJ Abrahms"
+    }
+  ]
+}
