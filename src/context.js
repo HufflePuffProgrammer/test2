@@ -39,6 +39,11 @@ export class Provider extends Component {
       "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies"
     );
     this.setState({ movies: res.data });
+
+    res = await axios.get(
+      "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/comments"
+    );
+    this.setState({ comments: res.data });
   }
 
   render() {

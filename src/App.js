@@ -8,9 +8,11 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Movies from "./components/movies/Movies";
 import MovieAdd from "./components/movies/MovieAdd";
 import MovieEdit from "./components/movies/MovieEdit";
+import Comments from "./components/comments/comments";
 
 import Header from "./components/layout/Header";
 import About from "./components/pages/About";
+
 import NotFound from "./components/pages/NotFound";
 import { Provider } from "./context";
 
@@ -33,6 +35,7 @@ class App extends Component {
                 <Route exact path="/movie/add" component={MovieAdd} />
                 <Route exact path="/movie/edit/:id" component={MovieEdit} />
                 <Route exact path="/about" component={About} />
+                <Route exact path="/comments" component={Comments} />
                 <Route component={NotFound} />
               </Switch>
             </div>
