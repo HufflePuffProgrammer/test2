@@ -1,8 +1,7 @@
 {
-
   "comments": [
     {
-      "movieid":1,
+      "movieid": 1,
       "superhero": true,
       "goldenfleece": false,
       "fooltriumphant": false,
@@ -11,7 +10,7 @@
       "dialogue_good": false
     },
     {
-      "movieid":2,
+      "movieid": 2,
       "superhero": false,
       "goldenfleece": true,
       "fooltriumphant": false,
@@ -20,7 +19,7 @@
       "dialogue_good": false
     },
     {
-      "movieid":3,
+      "movieid": 3,
       "superhero": false,
       "goldenfleece": false,
       "fooltriumphant": true,
@@ -28,7 +27,7 @@
       "chararc_good": false,
       "dialogue_good": true
     }
-  ]
+  ],
   "movies": [
     {
       "id": 1,

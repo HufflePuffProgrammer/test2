@@ -29,21 +29,23 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     movies: [],
+    comments: [],
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }
   };
 
-  async componentDidMount() {
-    const res = await axios.get(
+  componentDidMount() {
+    const resMovies = axios.get(
       "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies"
     );
-    this.setState({ movies: res.data });
+    this.setState({ movies: resMovies.data });
 
-    res = await axios.get(
+    const resGenres = axios.get(
       "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/comments"
     );
-    this.setState({ comments: res.data });
+    this.setState({ comments: resGenres.data });
+    console.log("context.js");
   }
 
   render() {
