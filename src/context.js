@@ -41,11 +41,12 @@ export class Provider extends Component {
     );
     this.setState({ movies: resMovies.data });
 
-    const resGenres = axios.get(
-      "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/comments"
-    );
-    this.setState({ comments: resGenres.data });
+    // const resGenres = axios.get(
+    //   "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies"
+    // );
+    // this.setState({ comments: resGenres.data });
     console.log("context.js");
+    console.log(this.state.movies);
   }
 
   render() {
