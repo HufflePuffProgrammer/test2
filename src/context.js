@@ -35,18 +35,23 @@ export class Provider extends Component {
     }
   };
 
-  componentDidMount() {
-    const resMovies = axios.get(
+  async componentDidMount() {
+    const res = await axios.get(
       "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies"
     );
-    this.setState({ movies: resMovies.data });
+    this.setState({ movies: res.data });
+
+    const resGenres = await axios.get(
+      "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies"
+    );
+    this.setState({ comments: resGenres.data });
 
     // const resGenres = axios.get(
     //   "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies"
     // );
     // this.setState({ comments: resGenres.data });
     console.log("context.js");
-    console.log(this.state.movies);
+    console.log(this.state.comments);
   }
 
   render() {
