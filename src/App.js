@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Movies from "./components/movies/Movies";
 import MovieAdd from "./components/movies/MovieAdd";
+import MovieEdit from "./components/movies/MovieEdit";
 
 import Header from "./components/layout/Header";
 import About from "./components/pages/About";
@@ -29,16 +30,13 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Movies} />
+                <Route exact path="/movie/add" component={MovieAdd} />
+                <Route exact path="/movie/edit/:id" component={MovieEdit} />
                 <Route exact path="/about" component={About} />
-                <Route exact path="/movies/add" component={MovieAdd} />
                 <Route component={NotFound} />
               </Switch>
             </div>
           </div>
-
-          <Switch>
-            <Route exact path="/movie/add" />
-          </Switch>
         </Router>
       </Provider>
     );

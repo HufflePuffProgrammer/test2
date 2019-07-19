@@ -13,22 +13,22 @@ function TextInputGroup({
 }) {
   return (
     <div className="form-group">
-      <label htmlFor="name">{label}</label>
+      <label htmlFor="label"> {label} </label>
       <input
         type={type}
         name={name}
+        value={value}
+        placeholder={placeHolder}
         className={classnames("form-control form-control-lg", {
           "is-invalid": error
         })}
-        placeHolder={placeHolder}
-        minLength="2"
         onChange={onChange}
-        value={value}
       />
       {error && <div className="invalid-feedback">{error}</div>}
     </div>
   );
 }
+
 TextInputGroup.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

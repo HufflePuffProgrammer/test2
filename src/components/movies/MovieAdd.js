@@ -5,6 +5,7 @@ import TextInputGroup from "../layout/TextInputGroup";
 import uuid from "uuid";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 class MovieAdd extends Component {
   state = {
@@ -15,7 +16,7 @@ class MovieAdd extends Component {
     errors: {}
   };
 
-  onSubmit = (dispatch, e) => {
+  onSubmit = async (dispatch, e) => {
     e.preventDefault();
     const { title, desc, writer, director } = this.state;
 
@@ -37,13 +38,16 @@ class MovieAdd extends Component {
       return;
     }
     const newMovie = {
-      id: uuid(),
       title,
       desc,
       writer,
       director
     };
-    dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    const res = await axios.post(
+      "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies",
+      newMovie
+    );
+    dispatch({ type: "ADD_MOVIE", payload: res.data });
 
     //clear fields
     this.setState({
@@ -71,39 +75,37 @@ class MovieAdd extends Component {
               <div className="card-body">
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                   <TextInputGroup
-                    label="Title"
                     name="title"
-                    placeHolder="Enter the Title"
+                    label="Title"
                     value={title}
+                    placeHolder="Enter the Title"
                     onChange={this.onChange}
                     error={errors.title}
                   />
                   <TextInputGroup
-                    label="Description"
                     name="desc"
-                    placeHolder="Enter the description"
+                    label="Desc"
                     value={desc}
+                    placeHolder="Enter the Description"
                     onChange={this.onChange}
                     error={errors.desc}
                   />
                   <TextInputGroup
-                    label="Writer"
                     name="writer"
-                    placeHolder="Enter the Writer"
+                    label="Writer"
                     value={writer}
+                    placeHolder="Enter the Writer"
                     onChange={this.onChange}
                     error={errors.writer}
                   />
-
                   <TextInputGroup
-                    label="Director"
                     name="director"
-                    placeHolder="Enter the Director"
+                    label="Director"
                     value={director}
+                    placeHolder="Enter the Director"
                     onChange={this.onChange}
                     error={errors.director}
                   />
-
                   <input
                     type="submit"
                     value="Add Movie"
