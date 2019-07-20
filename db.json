@@ -7,25 +7,34 @@
       "fooltriumphant": false,
       "opening_good": true,
       "chararc_good": false,
-      "dialogue_good": false
+      "dialogue_good": false,
+      "opening_poor": true,
+      "chararc_poor": false,
+      "dialogue_poor": false
     },
     {
       "movieid": 2,
-      "superhero": false,
+      "superhero": true,
       "goldenfleece": true,
       "fooltriumphant": false,
       "opening_good": false,
       "chararc_good": true,
-      "dialogue_good": false
+      "dialogue_good": false,
+      "opening_poor": true,
+      "chararc_poor": true,
+      "dialogue_poor": false
     },
     {
       "movieid": 3,
       "superhero": false,
-      "goldenfleece": false,
+      "goldenfleece": true,
       "fooltriumphant": true,
       "opening_good": false,
       "chararc_good": false,
-      "dialogue_good": true
+      "dialogue_good": true,
+      "opening_poor": true,
+      "chararc_poor": true,
+      "dialogue_poor": true
     }
   ],
   "movies": [

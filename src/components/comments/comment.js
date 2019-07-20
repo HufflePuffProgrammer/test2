@@ -10,17 +10,33 @@ class Comment extends Component {
   }
 
   render() {
+    const {
+      movieid,
+      superhero,
+      goldenfleece,
+      fooltriumphant,
+      opening_good,
+      chararc_good,
+      dialogue_good
+    } = this.props.comment;
     return (
       <Consumer>
         {value => {
           const { dispatch } = value;
           return (
             <div className="card card-body mb-3">
-              <h4>title movie id</h4>
+              <h4>movie id: {movieid}</h4>
               <ul className="list-group">
-                <li className="list-group-item">desc</li>
-                <li className="list-group-item">writer: </li>
-                <li className="list-group-item">director:</li>
+                <li className="list-group-item">
+                  {superhero ? ` Superhero` : null}
+                  {goldenfleece ? ` Goldenfleece ` : null}
+                  {fooltriumphant ? ` Fool Triumphant ` : null}
+                </li>
+                <li className="list-group-item">
+                  {opening_good ? ` Opening Good` : null}
+                  {chararc_good ? ` Character Arc Good ` : null}
+                  {dialogue_good ? ` Dialogue Good ` : null}
+                </li>
               </ul>
             </div>
           );
@@ -30,6 +46,6 @@ class Comment extends Component {
   }
 }
 Comment.propTypes = {
-  movie: PropTypes.object.isRequired
+  comment: PropTypes.object.isRequired
 };
 export default Comment;

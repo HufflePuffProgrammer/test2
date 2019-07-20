@@ -36,22 +36,15 @@ export class Provider extends Component {
   };
 
   async componentDidMount() {
-    const res = await axios.get(
+    const resMovies = await axios.get(
       "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies"
     );
-    this.setState({ movies: res.data });
+    this.setState({ movies: resMovies.data });
 
     const resGenres = await axios.get(
-      "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies"
+      "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/comments"
     );
     this.setState({ comments: resGenres.data });
-
-    // const resGenres = axios.get(
-    //   "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies"
-    // );
-    // this.setState({ comments: resGenres.data });
-    console.log("context.js");
-    console.log(this.state.comments);
   }
 
   render() {

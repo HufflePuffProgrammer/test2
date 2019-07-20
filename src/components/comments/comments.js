@@ -13,19 +13,15 @@ class Comments extends Component {
       <Consumer>
         {value => {
           const { comments } = value;
-          console.log("Comments");
-          console.log(comments);
+
           return (
             <React.Fragment>
               <h1 className="display-4 mb-2">
                 <span className="text-primary">Comments </span>List
               </h1>
-              {
-                <Comment />
-                //movies.map(movie => (
-                //<Movie key={movie.id} movie={movie} />
-                //))
-              }
+              {comments.map(comment => (
+                <Comment key={comment.movieid} comment={comment} />
+              ))}
             </React.Fragment>
           );
         }}
