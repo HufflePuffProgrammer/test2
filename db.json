@@ -3,15 +3,28 @@
     {
       "movieid": 1,
       "superhero": true,
+      "goldenfleece": true,
+      "fooltriumphant": true,
+      "opening_good": true,
+      "chararc_good": true,
+      "dialogue_good": true,
+      "opening_poor": true,
+      "chararc_poor": true,
+      "dialogue_poor": true,
+      "comment_text": "Spiderman is my new fave movie"
+    },
+    {
+      "movieid": 1,
+      "superhero": true,
       "goldenfleece": false,
       "fooltriumphant": false,
       "opening_good": true,
-      "chararc_good": false,
-      "dialogue_good": false,
-      "opening_poor": true,
+      "chararc_good": true,
+      "dialogue_good": true,
+      "opening_poor": false,
       "chararc_poor": false,
-      "dialogue_poor": false,
-      "comment_text": "Spiderman is my new fave movie"
+      "dialogue_poor": true,
+      "comment_text": "SpiderVerse was the best"
     },
     {
       "movieid": 2,

@@ -17,7 +17,11 @@ class Comment extends Component {
       fooltriumphant,
       opening_good,
       chararc_good,
-      dialogue_good
+      dialogue_good,
+      opening_poor,
+      chararc_poor,
+      dialogue_poor,
+      comment_text
     } = this.props.comment;
     return (
       <Consumer>
@@ -29,7 +33,7 @@ class Comment extends Component {
               <ul className="list-group">
                 <li className="list-group-item">
                   {superhero ? ` Superhero` : null}
-                  {goldenfleece ? ` Goldenfleece ` : null}
+                  {goldenfleece ? ` Golden Fleece ` : null}
                   {fooltriumphant ? ` Fool Triumphant ` : null}
                 </li>
                 <li className="list-group-item">
@@ -37,6 +41,12 @@ class Comment extends Component {
                   {chararc_good ? ` Character Arc Good ` : null}
                   {dialogue_good ? ` Dialogue Good ` : null}
                 </li>
+                <li className="list-group-item">
+                  {opening_poor ? ` Opening Poor` : null}
+                  {chararc_poor ? ` Character Arc Poor ` : null}
+                  {dialogue_poor ? ` Dialogue Poor ` : null}
+                </li>
+                <li className="list-group-item">{comment_text}</li>
               </ul>
             </div>
           );
