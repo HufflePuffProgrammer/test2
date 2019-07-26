@@ -1,19 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
-import Comment from "./comment";
+import Comment from "./Comment";
 
 class Comments extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <Consumer>
         {value => {
           const { comments } = value;
-
           return (
             <React.Fragment>
               <h1 className="display-4 mb-2">
