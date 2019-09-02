@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class CommentText extends Component {
+class CommentText extends Component {
   commentGenreText = commentText => {
     const { superhero, goldenfleece, fooltriumphant } = commentText;
     let genreString = "";
@@ -76,9 +76,11 @@ export default class CommentText extends Component {
           <br />
           Poor use of: {this.commentCharsPoorText(commentText)}
           <br />
-          {this.commentText(commentText)}
+          <li>{this.commentText(commentText)}</li>
         </li>
       </div>
     );
   }
 }
+
+export default CommentText;

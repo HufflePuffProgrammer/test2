@@ -14,7 +14,7 @@
       "comment_text": "Spiderman is my new fave movie"
     },
     {
-      "movieid": 1,
+      "movieid": 2,
       "superhero": true,
       "goldenfleece": false,
       "fooltriumphant": false,
@@ -27,7 +27,7 @@
       "comment_text": "SpiderVerse was the best"
     },
     {
-      "movieid": 2,
+      "movieid": 3,
       "superhero": true,
       "goldenfleece": true,
       "fooltriumphant": false,
@@ -40,7 +40,7 @@
       "comment_text": "Hailey is one hawt chick"
     },
     {
-      "movieid": 3,
+      "movieid": 4,
       "superhero": false,
       "goldenfleece": true,
       "fooltriumphant": true,

@@ -1,69 +1,159 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
-import TextInputGroup from "../layout/TextInputGroup";
-
-import uuid from "uuid";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import Checkbox from "../checkboxes/Checkbox";
 import axios from "axios";
 
-class MovieAdd extends Component {
-  state = {
-    title: "",
-    desc: "",
-    writer: "",
-    director: "",
-    errors: {}
-  };
+class CommentAdd extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      commentText: "",
+      checkboxes: []
+    };
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+  }
+  componentDidMount() {
+    let listCheckboxes = [];
+    listCheckboxes["opening_poor"] = false;
+    listCheckboxes["chararc_poor"] = false;
+    listCheckboxes["dialogue_poor"] = false;
 
+    listCheckboxes["opening_good"] = false;
+    listCheckboxes["chararc_good"] = false;
+    listCheckboxes["dialogue_good"] = false;
+
+    listCheckboxes["superhero"] = false;
+    listCheckboxes["goldenfleece"] = false;
+    listCheckboxes["fooltriumphant"] = false;
+
+    this.setState({
+      checkboxes: listCheckboxes
+    });
+  }
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
-    const { title, desc, writer, director } = this.state;
+    const { commentText, checkboxes } = this.state;
+
+    console.log("onsubmit");
+    console.log(checkboxes);
+
+    const newComment = {
+      movieid: 5,
+      superhero: checkboxes.superhero,
+      goldenfleece: checkboxes.goldenfleece,
+      fooltriumphant: checkboxes.fooltriumphant,
+      opening_good: checkboxes.opening_good,
+      chararc_good: checkboxes.chararc_good,
+      dialogue_good: checkboxes.dialogue_good,
+      opening_poor: checkboxes.opening_poor,
+      chararc_poor: checkboxes.chararc_poor,
+      dialogue_poor: checkboxes.dialogue_poor,
+      comment_text: commentText
+    };
+
+    console.log("newComments");
+    console.log(newComment);
 
     //Check for Errors
-    if (title === "") {
-      this.setState({ errors: { title: "Title is required" } });
-      return;
-    }
-    if (desc === "") {
-      this.setState({ errors: { desc: "Description is required" } });
-      return;
-    }
-    if (writer === "") {
-      this.setState({ errors: { writer: "Writer is required" } });
-      return;
-    }
-    if (director === "") {
-      this.setState({ errors: { director: "Director is required" } });
-      return;
-    }
-    const newMovie = {
-      title,
-      desc,
-      writer,
-      director
-    };
-    const res = await axios.post(
-      "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies",
-      newMovie
-    );
-    dispatch({ type: "ADD_MOVIE", payload: res.data });
 
-    //clear fields
+    //Call reducer and dispatch
+    //const res = axios.post(
+    // "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/comments",
+    //  newComment
+    //);
+
+    dispatch({ type: "ADD_COMMENT", payload: newComment });
+
+    this.deselectAll();
     this.setState({
-      title: "",
-      desc: "",
-      writer: "",
-      director: "",
-      errors: {}
+      commentText: ""
     });
-    this.props.history.push("/");
+    //Clear inputs
+    // this.setState({
+    //   movieid: "",
+    //   superhero: false,
+    //   goldenfleece: false,
+    //   fooltriumphant: false,
+    //   opening_good: false,
+    //   chararc_good: false,
+    //   dialogue_good: false,
+    //   // opening_poor: false,
+    //   // chararc_poor: false,
+    //   // dialogue_poor: false,
+    //   // comment_text: "",
+    //   checkboxes: []
+    // });
+
+    this.props.history.push("/comments");
   };
 
+  handleCheckboxChange(event) {
+    const { name, value } = event.target;
+
+    this.setState(prevState => ({
+      checkboxes: {
+        ...prevState.checkboxes,
+        [value]: !prevState.checkboxes[value]
+      }
+    }));
+  }
+  selectAllCheckboxes = isSelected => {
+    Object.keys(this.state.checkboxes).forEach(checkbox => {
+      this.setState(prevState => ({
+        checkboxes: { ...prevState.checkboxes, [checkbox]: isSelected }
+      }));
+    });
+  };
+
+  selectAll = () => this.selectAllCheckboxes(true);
+  deselectAll = () => this.selectAllCheckboxes(false);
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
+  createCheckboxes = () => {
+    return (
+      <div>
+        <Checkbox
+          genre_id="opening_poor"
+          label="Poor Opening"
+          key="opening_poor"
+          isSelected={this.state.checkboxes["opening_poor"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
+        <Checkbox
+          genre_id="chararc_poor"
+          label="Poor Character Arc"
+          key="chararc_poor"
+          isSelected={this.state.checkboxes["chararc_poor"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
+        <Checkbox
+          genre_id="dialogue_poor"
+          label="Poor Dialogue"
+          key="dialogue_poor"
+          isSelected={this.state.checkboxes["dialogue_poor"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
+        <button
+          type="button"
+          className="btn btn-outline-primary mr-2"
+          onClick={this.selectAll}
+        >
+          {" "}
+          Select All
+        </button>
+        <button
+          type="button"
+          className="btn btn-outline-primary mr-2"
+          onClick={this.deselectAll}
+        >
+          Deselect All
+        </button>
+      </div>
+    );
+  };
+
   render() {
-    const { title, desc, writer, director, errors } = this.state;
+    const { commentText } = this.state;
 
     return (
       <Consumer>
@@ -71,44 +161,26 @@ class MovieAdd extends Component {
           const { dispatch } = value;
           return (
             <div className="card mb-3">
-              <div className="card-header">Add Movie</div>
+              <div className="card-header">Add Comment</div>
               <div className="card-body">
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                  <TextInputGroup
-                    name="title"
-                    label="Title"
-                    value={title}
-                    placeHolder="Enter the Title"
-                    onChange={this.onChange}
-                    error={errors.title}
-                  />
-                  <TextInputGroup
-                    name="desc"
-                    label="Desc"
-                    value={desc}
-                    placeHolder="Enter the Description"
-                    onChange={this.onChange}
-                    error={errors.desc}
-                  />
-                  <TextInputGroup
-                    name="writer"
-                    label="Writer"
-                    value={writer}
-                    placeHolder="Enter the Writer"
-                    onChange={this.onChange}
-                    error={errors.writer}
-                  />
-                  <TextInputGroup
-                    name="director"
-                    label="Director"
-                    value={director}
-                    placeHolder="Enter the Director"
-                    onChange={this.onChange}
-                    error={errors.director}
-                  />
+                  <div className="form-group">
+                    {this.createCheckboxes()}
+
+                    <label htmlFor="label">Comment: </label>
+
+                    <input
+                      type="text"
+                      name="commentText"
+                      value={commentText}
+                      placeholder="Type your comment"
+                      onChange={this.onChange}
+                    />
+                  </div>
+
                   <input
                     type="submit"
-                    value="Add Movie"
+                    value="Add Comment"
                     className="btn btn-light btn-block"
                   />
                 </form>
@@ -120,4 +192,4 @@ class MovieAdd extends Component {
     );
   }
 }
-export default MovieAdd;
+export default CommentAdd;

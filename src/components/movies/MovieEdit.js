@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Consumer } from "../../context";
 import TextInputGroup from "../layout/TextInputGroup";
 
-import uuid from "uuid";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";

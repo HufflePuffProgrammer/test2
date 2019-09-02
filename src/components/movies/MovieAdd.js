@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Consumer } from "../../context";
 import TextInputGroup from "../layout/TextInputGroup";
 
-import uuid from "uuid";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -47,7 +46,7 @@ class MovieAdd extends Component {
       "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies",
       newMovie
     );
-    dispatch({ type: "ADD_MOVIE", payload: res.data });
+    dispatch({ type: "ADD_MOVIE", payload: newMovie });
 
     //clear fields
     this.setState({
