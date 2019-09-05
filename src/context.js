@@ -23,15 +23,11 @@ const reducer = (state, action) => {
         )
       };
     case "ADD_COMMENT":
-      console.log("add_comment");
-      console.log(action.payload);
-      console.log(state.comments);
       return {
         ...state,
         comments: [action.payload, ...state.comments]
       };
 
-    //return state;
     default:
       return state;
   }

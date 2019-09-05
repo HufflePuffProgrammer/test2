@@ -76,7 +76,7 @@ class CommentText extends Component {
           <br />
           Poor use of: {this.commentCharsPoorText(commentText)}
           <br />
-          <li>{this.commentText(commentText)}</li>
+          {this.commentText(commentText)}
         </li>
       </div>
     );

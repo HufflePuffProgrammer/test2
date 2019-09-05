@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
+import Comment from "../comments/Comment";
 import axios from "axios";
 
 class Movie extends Component {
@@ -38,6 +39,12 @@ class Movie extends Component {
       <Consumer>
         {value => {
           const { dispatch } = value;
+          const { comments } = value;
+
+          const newComments = comments.filter(
+            comment => comment.movieid === id
+          );
+
           return (
             <div className="card card-body mb-3">
               <h4>
@@ -69,6 +76,9 @@ class Movie extends Component {
                   <li className="list-group-item">{desc}</li>
                   <li className="list-group-item">writer: {writer}</li>
                   <li className="list-group-item">director: {director}</li>
+                  {newComments.slice(0, 3).map(comment => (
+                    <Comment key={id} comment={comment} />
+                  ))}
                 </ul>
               ) : null}
             </div>

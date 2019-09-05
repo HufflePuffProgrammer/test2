@@ -9,6 +9,7 @@ class CommentAdd extends Component {
     this.state = {
       commentText: "",
       checkboxes: []
+      // isSelectedBox: false
     };
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
@@ -28,6 +29,7 @@ class CommentAdd extends Component {
 
     this.setState({
       checkboxes: listCheckboxes
+      //isSelectedBox: false
     });
   }
   onSubmit = async (dispatch, e) => {
@@ -68,27 +70,12 @@ class CommentAdd extends Component {
     this.setState({
       commentText: ""
     });
-    //Clear inputs
-    // this.setState({
-    //   movieid: "",
-    //   superhero: false,
-    //   goldenfleece: false,
-    //   fooltriumphant: false,
-    //   opening_good: false,
-    //   chararc_good: false,
-    //   dialogue_good: false,
-    //   // opening_poor: false,
-    //   // chararc_poor: false,
-    //   // dialogue_poor: false,
-    //   // comment_text: "",
-    //   checkboxes: []
-    // });
 
     this.props.history.push("/comments");
   };
 
   handleCheckboxChange(event) {
-    const { name, value } = event.target;
+    const { value } = event.target;
 
     this.setState(prevState => ({
       checkboxes: {
@@ -107,7 +94,7 @@ class CommentAdd extends Component {
 
   selectAll = () => this.selectAllCheckboxes(true);
   deselectAll = () => this.selectAllCheckboxes(false);
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  handleTextboxChange = e => this.setState({ [e.target.name]: e.target.value });
 
   createCheckboxes = () => {
     return (
@@ -133,6 +120,7 @@ class CommentAdd extends Component {
           isSelected={this.state.checkboxes["dialogue_poor"]}
           onCheckboxChange={this.handleCheckboxChange}
         />
+
         <button
           type="button"
           className="btn btn-outline-primary mr-2"
@@ -174,7 +162,7 @@ class CommentAdd extends Component {
                       name="commentText"
                       value={commentText}
                       placeholder="Type your comment"
-                      onChange={this.onChange}
+                      onChange={this.handleTextboxChange}
                     />
                   </div>
 

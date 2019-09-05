@@ -11,7 +11,46 @@
       "opening_poor": true,
       "chararc_poor": true,
       "dialogue_poor": true,
-      "comment_text": "Spiderman is my new fave movie"
+      "comment_text": "Spiderman 1"
+    },
+    {
+      "movieid": 1,
+      "superhero": true,
+      "goldenfleece": true,
+      "fooltriumphant": true,
+      "opening_good": true,
+      "chararc_good": true,
+      "dialogue_good": true,
+      "opening_poor": true,
+      "chararc_psoor": true,
+      "dialogue_poor": true,
+      "comment_text": "Spiderman 2"
+    },
+    {
+      "movieid": 1,
+      "superhero": true,
+      "goldenfleece": true,
+      "fooltriumphant": true,
+      "opening_good": true,
+      "chararc_good": true,
+      "dialogue_good": true,
+      "opening_poor": true,
+      "chararc_poor": true,
+      "dialogue_poor": true,
+      "comment_text": "Spiderman 3"
+    },
+    {
+      "movieid": 1,
+      "superhero": true,
+      "goldenfleece": true,
+      "fooltriumphant": true,
+      "opening_good": true,
+      "chararc_good": true,
+      "dialogue_good": true,
+      "opening_poor": true,
+      "chararc_poor": true,
+      "dialogue_poor": true,
+      "comment_text": "Spiderman 4"
     },
     {
       "movieid": 2,

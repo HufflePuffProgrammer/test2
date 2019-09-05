@@ -20,6 +20,7 @@ class Movies extends Component {
       <Consumer>
         {value => {
           const { movies } = value;
+
           return (
             <React.Fragment>
               <h1 className="display-4 mb-2">

@@ -8,7 +8,6 @@ class Comment extends Component {
     return (
       <React.Fragment>
         <ul className="list-group">
-          Comment:
           <CommentText commentText={comment} />
         </ul>
       </React.Fragment>
