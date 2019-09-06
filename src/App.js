@@ -36,7 +36,7 @@ class App extends Component {
                 <Route exact path="/movie/add" component={MovieAdd} />
                 <Route exact path="/movie/edit/:id" component={MovieEdit} />
                 <Route exact path="/about" component={About} />
-                <Route exact path="/comments" component={Comments} />
+                <Route exact path="/comments/:id" component={Comments} />
                 <Route exact path="/comments/add" component={CommentAdd} />
                 <Route component={NotFound} />
               </Switch>

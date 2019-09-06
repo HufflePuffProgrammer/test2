@@ -76,6 +76,11 @@ class Movie extends Component {
                   <li className="list-group-item">{desc}</li>
                   <li className="list-group-item">writer: {writer}</li>
                   <li className="list-group-item">director: {director}</li>
+                  <li className="list-group-item">
+                    <span className="pull-right">
+                      <Link to={`comments/${id}`}> >>>View More Comments</Link>
+                    </span>
+                  </li>
                   {newComments.slice(0, 3).map(comment => (
                     <Comment key={id} comment={comment} />
                   ))}
