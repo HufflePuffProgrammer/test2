@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import Checkbox from "../checkboxes/Checkbox";
-import axios from "axios";
+import uuid from "uuid";
 
 class CommentAdd extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       commentText: "",
-      checkboxes: []
+      checkboxes: [],
+      movieid: this.props.match.params
       // isSelectedBox: false
     };
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
@@ -26,21 +28,21 @@ class CommentAdd extends Component {
     listCheckboxes["superhero"] = false;
     listCheckboxes["goldenfleece"] = false;
     listCheckboxes["fooltriumphant"] = false;
+    const { id } = this.props.match.params;
 
     this.setState({
-      checkboxes: listCheckboxes
+      checkboxes: listCheckboxes,
+      movieid: id
       //isSelectedBox: false
     });
   }
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
-    const { commentText, checkboxes } = this.state;
-
-    console.log("onsubmit");
-    console.log(checkboxes);
+    const { commentText, checkboxes, movieid } = this.state;
 
     const newComment = {
-      movieid: 5,
+      id: uuid(),
+      movieid: movieid,
       superhero: checkboxes.superhero,
       goldenfleece: checkboxes.goldenfleece,
       fooltriumphant: checkboxes.fooltriumphant,
@@ -52,9 +54,6 @@ class CommentAdd extends Component {
       dialogue_poor: checkboxes.dialogue_poor,
       comment_text: commentText
     };
-
-    console.log("newComments");
-    console.log(newComment);
 
     //Check for Errors
 
@@ -70,8 +69,7 @@ class CommentAdd extends Component {
     this.setState({
       commentText: ""
     });
-
-    this.props.history.push("/comments");
+    this.props.history.push(`/comments/${movieid}`);
   };
 
   handleCheckboxChange(event) {

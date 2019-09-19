@@ -10,6 +10,7 @@ import MovieAdd from "./components/movies/MovieAdd";
 import MovieEdit from "./components/movies/MovieEdit";
 import Comments from "./components/comments/Comments";
 import CommentAdd from "./components/comments/CommentAdd";
+import CommentEdit from "./components/comments/CommentEdit";
 
 import Header from "./components/layout/Header";
 import About from "./components/pages/About";
@@ -37,7 +38,13 @@ class App extends Component {
                 <Route exact path="/movie/edit/:id" component={MovieEdit} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/comments/:id" component={Comments} />
-                <Route exact path="/comments/add" component={CommentAdd} />
+                <Route exact path="/comments/add/:id" component={CommentAdd} />
+                <Route
+                  exact
+                  path="/comments/edit/:id"
+                  component={CommentEdit}
+                />
+
                 <Route component={NotFound} />
               </Switch>
             </div>

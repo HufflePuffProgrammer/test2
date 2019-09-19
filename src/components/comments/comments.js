@@ -1,42 +1,55 @@
 import React, { Component } from "react";
 import Comment from "./Comment";
-import axios from "axios";
+import { Consumer } from "../../context";
+import MoviePerComment from "../movies/MoviePerComment";
+import { Link } from "react-router-dom";
+//import axios from "axios";
 
 class Comments extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      comments: []
-    };
-  }
-  async componentDidMount() {
-    const { id } = this.props.match.params;
-
-    const res = await axios.get(
-      `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/comments`
-    );
-
-    const comments = res.data;
-    const commentsPerMovie = comments.filter(comment => comment.movieid == id);
-
-    this.setState({
-      comments: commentsPerMovie
-    });
-  }
-
   render() {
-    const { comments } = this.state;
-
+    const { id } = this.props.match.params;
+    console.log(id);
     return (
-      <React.Fragment>
-        <h1 className="display-4 mb-2">
-          <span className="text-primary">Comments v1.0 </span>List
-        </h1>
-        Comments:{" "}
-        {comments.map(comment => (
-          <Comment key={comment.movieid} comment={comment} />
-        ))}
-      </React.Fragment>
+      <Consumer>
+        {value => {
+          const { comments, movies } = value;
+
+          const commentsPerMovie = comments.filter(
+            comment => comment.movieid == id
+          );
+          const moviesPerMovieID = movies.filter(movie => movie.id == id);
+
+          return (
+            <React.Fragment>
+              <h1 className="display-4 mb-2">
+                <span className="text-primary">Comments v1.0 </span>List
+              </h1>
+              <h4 className="display-4 mb-2">
+                <span className="text-primary">Movie </span>
+              </h4>
+              {moviesPerMovieID.map(movie => (
+                <MoviePerComment key={movie.id} movie={movie} />
+              ))}
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">Comments: </li>
+                <li className="nav-item">
+                  <Link to={`/comments/add/${id}`} className="nav-link">
+                    <i className="fas fa-plus" />
+                    Add Comments
+                  </Link>
+                </li>
+              </ul>
+              {commentsPerMovie.map(comment => (
+                <Comment
+                  key={comment.commentsid}
+                  movieid={comment.movieid}
+                  comment={comment}
+                />
+              ))}
+            </React.Fragment>
+          );
+        }}
+      </Consumer>
     );
   }
 }

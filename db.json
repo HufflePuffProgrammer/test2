@@ -1,7 +1,7 @@
 {
   "comments": [
     {
-      "commentsid": 1,
+      "id": 1,
       "movieid": 1,
       "superhero": true,
       "goldenfleece": true,
@@ -15,7 +15,7 @@
       "comment_text": "Spiderman 1"
     },
     {
-      "commentsid": 2,
+      "id": 2,
       "movieid": 1,
       "superhero": true,
       "goldenfleece": true,
@@ -29,7 +29,7 @@
       "comment_text": "Spiderman 2"
     },
     {
-      "commentsid": 3,
+      "id": 3,
       "movieid": 1,
       "superhero": true,
       "goldenfleece": true,
@@ -43,7 +43,7 @@
       "comment_text": "Spiderman 3"
     },
     {
-      "commentsid": 4,
+      "id": 4,
       "movieid": 1,
       "superhero": true,
       "goldenfleece": true,
@@ -57,7 +57,7 @@
       "comment_text": "Spiderman 4"
     },
     {
-      "commentsid": 5,
+      "id": 5,
       "movieid": 2,
       "superhero": true,
       "goldenfleece": false,
@@ -71,7 +71,7 @@
       "comment_text": "SpiderVerse was the best"
     },
     {
-      "commentsid": 6,
+      "id": 6,
       "movieid": 3,
       "superhero": true,
       "goldenfleece": true,
@@ -85,7 +85,7 @@
       "comment_text": "Hailey is one hawt chick"
     },
     {
-      "commentsid": 7,
+      "id": 7,
       "movieid": 4,
       "superhero": false,
       "goldenfleece": true,
