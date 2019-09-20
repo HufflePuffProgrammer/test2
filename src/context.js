@@ -27,6 +27,15 @@ const reducer = (state, action) => {
         ...state,
         comments: [action.payload, ...state.comments]
       };
+    case "UPDATE_COMMENT":
+      return {
+        ...state,
+        comments: state.comments.map(comment =>
+          comment.id === action.payload.id
+            ? (comment = action.payload)
+            : comment
+        )
+      };
 
     default:
       return state;

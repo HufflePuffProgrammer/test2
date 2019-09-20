@@ -7,13 +7,16 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 class MovieEdit extends Component {
-  state = {
-    title: "",
-    desc: "",
-    writer: "",
-    director: "",
-    errors: {}
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      desc: "",
+      writer: "",
+      director: "",
+      errors: {}
+    };
+  }
 
   async componentDidMount() {
     const { id } = this.props.match.params;

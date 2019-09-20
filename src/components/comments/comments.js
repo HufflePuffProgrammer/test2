@@ -24,8 +24,8 @@ class Comments extends Component {
               <h1 className="display-4 mb-2">
                 <span className="text-primary">Comments v1.0 </span>List
               </h1>
-              <h4 className="display-4 mb-2">
-                <span className="text-primary">Movie </span>
+              <h4 className="display-6 mb-2">
+                <span className="text-primary">Movie Comments </span>
               </h4>
               {moviesPerMovieID.map(movie => (
                 <MoviePerComment key={movie.id} movie={movie} />
@@ -35,7 +35,7 @@ class Comments extends Component {
                 <li className="nav-item">
                   <Link to={`/comments/add/${id}`} className="nav-link">
                     <i className="fas fa-plus" />
-                    Add Comments
+                    Add Comment
                   </Link>
                 </li>
               </ul>
