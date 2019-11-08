@@ -119,21 +119,24 @@
       "title": "Spiderman: Far from home",
       "desc": "Our friendly neighborhood Super Hero decides to join his best friends on a European vacation.",
       "writer": "Chris McKenna",
-      "director": "Jon Watts"
+      "director": "Jon Watts",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMGZlNTY1ZWUtYTMzNC00ZjUyLWE0MjQtMTMxN2E3ODYxMWVmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
     },
     {
       "id": 2,
       "title": "The Edge of 17",
       "desc": "High-school life gets even more unbearable for Nadine when her best friend, Krista, starts dating her older brother.",
       "writer": "Kelly Fremon Craig",
-      "director": "Kelly Craig"
+      "director": "Kelly Craig",
+      "poster": "https://m.media-amazon.com/images/M/MV5BODE2NjE4NjYyMV5BMl5BanBnXkFtZTgwNzk3MjQ0OTE@._V1_SY1000_CR0,0,674,1000_AL_.jpg"
     },
     {
       "id": 3,
       "title": "The Domestics",
       "desc": "In the weeks following an apocalyptic event, a husband and wife",
       "writer": "Mike P. Nelson",
-      "director": "Mike Nelson"
+      "director": "Mike Nelson",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNjNhZjkzMDgtMDAyMC00NWY2LWIyOTMtZDM5NGIyNDNjMzE2XkEyXkFqcGdeQXVyODI1MzgzNjM@._V1_SY1000_CR0,0,675,1000_AL_.jpg"
     },
     {
       "id": 4,

@@ -22,12 +22,30 @@ class Movies extends Component {
 
           return (
             <React.Fragment>
-              <h1 className="display-4 mb-2">
-                <span className="text-primary">Movie </span>List
-              </h1>
-              {movies.map(movie => (
-                <Movie key={movie.id} movie={movie} />
-              ))}
+              <section id="movies">
+                <div class="container">
+                  <div class="row">
+                    <div class="col md-9">
+                      <table class="table table-striped">
+                        <thead class="thead-dark">
+                          <th width="20%">1Poster</th>
+                          <th width="40%">Movie</th>
+                          <th width="40%">Comments</th>
+                        </thead>
+                        {movies.map(movie => (
+                          <Movie key={movie.id} movie={movie} />
+                        ))}
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <h1 className="display-4 mb-2">
+                  <span className="text-primary">Movie </span>List
+                </h1>
+                {movies.map(movie => (
+                  <Movie key={movie.id} movie={movie} />
+                ))}
+              </section>
             </React.Fragment>
           );
         }}

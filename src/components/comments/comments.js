@@ -34,19 +34,19 @@ class Comments extends Component {
 
           return (
             <React.Fragment>
-              <header id="main-header" class="py-2 bg-success text-white">
+              <header id="main-header" class="py-0 bg-success text-white">
                 <div class="container">
                   <div class="row">
                     <div class="col-md-6">
                       <h1>
-                        <i class="fas fa-folder"></i> Commentsper Movie
+                        <i class="fas fa-folder"></i> Comments per Movie
                       </h1>
                     </div>
                   </div>
                 </div>
               </header>
 
-              <section id="search" class="py-4 mb-6 bg-light">
+              <section id="search" class="py-2 mb-6 bg-light">
                 <div class="container">
                   <div class="row">
                     <div class="col-md-4">
@@ -79,13 +79,39 @@ class Comments extends Component {
                   </div>
                 </div>
               </section>
-              {moviesPerMovieID.map(movie => (
-                <MoviePerComment key={movie.id} movie={movie} />
-              ))}
+              <section id="movie">
+                {moviesPerMovieID.map(movie => (
+                  <MoviePerComment key={movie.id} movie={movie} />
+                ))}
+              </section>
 
-              {commentsPerMovie.map(comment => (
-                <Comment key={id} movieid={comment.movieid} comment={comment} />
-              ))}
+              <div class="row">
+                <div class="col md-9">
+                  <section id="header">
+                    <header id="main-header" class="py-1 bg-success text-white">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <h6>Comments</h6>
+                          </div>
+                        </div>
+                      </div>
+                    </header>
+                  </section>
+
+                  <table class="table table-striped">
+                    <tbody>
+                      {commentsPerMovie.map(comment => (
+                        <Comment
+                          key={id}
+                          movieid={comment.movieid}
+                          comment={comment}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </React.Fragment>
           );
         }}

@@ -67,32 +67,27 @@ class CommentText extends Component {
 
   render() {
     const { commentText } = this.props;
-
+    const { title, user } = commentText;
     return (
-      <div>
-        <table class="table table-stripe">
-          <tr>
-            <td>
-              <div>
-                <strong>Title Where's Luke?</strong> by{" "}
-                <a href="#">User: Guest Comment</a>{" "}
-                <small>Date: 12/26/2019</small>
-              </div>
+      <tr>
+        <td>
+          <div>
+            <strong>{title}</strong> by <a href="#">User: {user}</a>{" "}
+            <small>Date: 12/26/2019</small>
+          </div>
 
-              <div>
-                <strong>Genres</strong> {this.commentGenreText(commentText)}
-              </div>
-              <div>
-                <strong>Good </strong> {this.commentCharsGoodText(commentText)}{" "}
-              </div>
-              <div>
-                <strong>Poor</strong> {this.commentCharsPoorText(commentText)}
-              </div>
-              <div>{this.commentText(commentText)}</div>
-            </td>
-          </tr>
-        </table>
-      </div>
+          <div>
+            <strong>Genres</strong> {this.commentGenreText(commentText)}
+          </div>
+          <div>
+            <strong>Good </strong> {this.commentCharsGoodText(commentText)}{" "}
+          </div>
+          <div>
+            <strong>Poor</strong> {this.commentCharsPoorText(commentText)}
+          </div>
+          <div>{this.commentText(commentText)}</div>
+        </td>
+      </tr>
     );
   }
 }

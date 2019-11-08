@@ -46,31 +46,7 @@ class Movie extends Component {
           );
 
           return (
-            <div>
-              <tr>
-                <td>
-                  <img
-                    src="https://static.metacritic.com/images/products/movies/3/e539bd40e3b68ba9e95ad337b30136b2-250h.jpg"
-                    alt="Skywalker Risen"
-                    class="img-thumbnail"
-                  />
-                </td>
-                <td>
-                  <div class="row">
-                    <h4>{title}</h4>
-                  </div>
-                  <div class="row">
-                    <text class="mr-1 font-weight-bold">Dir: </text> {director}
-                  </div>
-                  <div class="row">
-                    <text class="mr-1 font-weight-bold">Writer: </text> {writer}
-                  </div>
-                  <div class="row">
-                    <text class="mr-1 font-weight-bold">Summary: </text> {desc}
-                  </div>
-                </td>
-              </tr>
-
+            <div className="card card-body mb-3">
               <h4>
                 {title}
                 <i

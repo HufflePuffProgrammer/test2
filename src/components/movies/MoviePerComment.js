@@ -7,9 +7,9 @@ class MoviePerComment extends Component {
   render() {
     const { id, title, desc, writer, director } = this.props.movie;
     return (
-      <div class="container">
+      <div class="container ">
         <div class="row">
-          <div class="col md-9">
+          <div class="col md-9 py-6">
             <table class="table">
               <tr>
                 <td width="20%">
