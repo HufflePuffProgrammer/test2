@@ -12,7 +12,9 @@
       "opening_poor": true,
       "chararc_poor": true,
       "dialogue_poor": true,
-      "comment_text": "Spiderman 1"
+      "comment_text": "Spiderman 1",
+      "title": "My Absolute Fave",
+      "user": "She-Ra"
     },
     {
       "id": 2,
@@ -26,7 +28,9 @@
       "opening_poor": true,
       "chararc_poor": true,
       "dialogue_poor": true,
-      "comment_text": "Spiderman 2"
+      "comment_text": "Spiderman 2",
+      "title": "Could have been better",
+      "user": "Edward Norton"
     },
     {
       "id": 3,
@@ -40,7 +44,9 @@
       "opening_poor": true,
       "chararc_poor": true,
       "dialogue_poor": true,
-      "comment_text": "Spiderman 3"
+      "comment_text": "Spiderman 3",
+      "title": "Never talk about this",
+      "user": "Tyler Durden"
     },
     {
       "id": 4,
@@ -54,7 +60,9 @@
       "opening_poor": true,
       "chararc_poor": true,
       "dialogue_poor": true,
-      "comment_text": "Spiderman 4"
+      "comment_text": "Spiderman 4",
+      "title": "Hold Me",
+      "user": "Meatloaf"
     },
     {
       "id": 5,
@@ -68,7 +76,9 @@
       "opening_poor": false,
       "chararc_poor": false,
       "dialogue_poor": true,
-      "comment_text": "SpiderVerse was the best"
+      "comment_text": "SpiderVerse was the best",
+      "title": "Too PC 4 me",
+      "user": "Bill Burr"
     },
     {
       "id": 6,
@@ -82,7 +92,9 @@
       "opening_poor": true,
       "chararc_poor": true,
       "dialogue_poor": false,
-      "comment_text": "Hailey is one hawt chick"
+      "comment_text": "Hailey is one hawt chick",
+      "title": "Hold my beer",
+      "user": "Luis C.K."
     },
     {
       "id": 7,
@@ -96,7 +108,9 @@
       "opening_poor": true,
       "chararc_poor": true,
       "dialogue_poor": true,
-      "comment_text": "Where are the sexy shower scenes?"
+      "comment_text": "Where are the sexy shower scenes?",
+      "title": "I <3 it",
+      "user": "Whitney Cummings"
     }
   ],
   "movies": [

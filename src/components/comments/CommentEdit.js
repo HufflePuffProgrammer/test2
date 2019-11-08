@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import Checkbox from "../checkboxes/Checkbox";
-
 import PropTypes from "prop-types";
 import axios from "axios";
+import classnames from "classnames";
 
 class CommentEdit extends Component {
   constructor(props) {
@@ -37,6 +37,7 @@ class CommentEdit extends Component {
     );
 
     const comment = res.data;
+
     let listCheckboxes = [];
     listCheckboxes["opening_poor"] = comment.opening_poor;
     listCheckboxes["chararc_poor"] = comment.chararc_poor;
@@ -61,6 +62,10 @@ class CommentEdit extends Component {
     const { id, movieid, commentText, checkboxes } = this.state;
 
     //Check for Errors
+    if (commentText === "") {
+      this.setState({ errors: { comment_text: "Comment is required" } });
+      return;
+    }
     //updComment has updated data in component
     const updComment = {
       id,
@@ -143,7 +148,6 @@ class CommentEdit extends Component {
           onCheckboxChange={this.handleCheckboxChange}
           isSelected={checkboxes["dialogue_poor"]}
         />
-
         <Checkbox
           genre_id="dialogue_good"
           label="Good Dialogue"
@@ -151,7 +155,6 @@ class CommentEdit extends Component {
           onCheckboxChange={this.handleCheckboxChange}
           isSelected={checkboxes["dialogue_good"]}
         />
-
         <Checkbox
           genre_id="chararc_good"
           label="Good Character Arc"
@@ -159,7 +162,6 @@ class CommentEdit extends Component {
           onCheckboxChange={this.handleCheckboxChange}
           isSelected={checkboxes["chararc_good"]}
         />
-
         <Checkbox
           genre_id="opening_good"
           label="Good Opening"
@@ -208,14 +210,7 @@ class CommentEdit extends Component {
   };
 
   render() {
-    const {
-      id,
-      movieid,
-      commentText,
-      checkboxes,
-      superhero,
-      errors
-    } = this.state;
+    const { checkboxes, commentText, errors } = this.state;
 
     return (
       <Consumer>
@@ -223,19 +218,33 @@ class CommentEdit extends Component {
           const { dispatch } = value;
           return (
             <div className="card mb-3">
-              <div className="card-header">Add Comment</div>
+              <div className="card-header">Update Comment</div>
               <div className="card-body">
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                   <div className="form-group">
-                    {this.createCheckboxes(this.state.checkboxes)}
+                    {this.createCheckboxes(checkboxes)}
                     <label htmlFor="label">Comment: </label>
-                    <input
-                      type="text"
+
+                    <textarea
                       name="commentText"
-                      value={commentText}
+                      class="form-control form-control-sm mb-3"
+                      rows="5"
+                      id="commentText"
                       placeholder="Type your comment"
+                      className={classnames(
+                        "form-control form-control-sm mb-3",
+                        {
+                          "is-invalid": errors.comment_text
+                        }
+                      )}
                       onChange={this.handleTextboxChange}
+                      value={commentText}
                     />
+                    {errors.comment_text && (
+                      <div className="invalid-feedback">
+                        {errors.comment_text}
+                      </div>
+                    )}
                   </div>
                   <input
                     type="submit"
@@ -251,4 +260,8 @@ class CommentEdit extends Component {
     );
   }
 }
+
+// CommentEdit.propTypes = {
+//   id: PropTypes.number.isRequired
+// };
 export default CommentEdit;

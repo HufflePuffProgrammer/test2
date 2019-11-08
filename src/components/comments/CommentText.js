@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class CommentText extends Component {
   commentGenreText = commentText => {
@@ -69,18 +70,34 @@ class CommentText extends Component {
 
     return (
       <div>
-        <li className="list-group-item list-group-item-light">
-          Genre: {this.commentGenreText(commentText)}
-          <br />
-          Good use of: {this.commentCharsGoodText(commentText)}
-          <br />
-          Poor use of: {this.commentCharsPoorText(commentText)}
-          <br />
-          {this.commentText(commentText)}
-        </li>
+        <table class="table table-stripe">
+          <tr>
+            <td>
+              <div>
+                <strong>Title Where's Luke?</strong> by{" "}
+                <a href="#">User: Guest Comment</a>{" "}
+                <small>Date: 12/26/2019</small>
+              </div>
+
+              <div>
+                <strong>Genres</strong> {this.commentGenreText(commentText)}
+              </div>
+              <div>
+                <strong>Good </strong> {this.commentCharsGoodText(commentText)}{" "}
+              </div>
+              <div>
+                <strong>Poor</strong> {this.commentCharsPoorText(commentText)}
+              </div>
+              <div>{this.commentText(commentText)}</div>
+            </td>
+          </tr>
+        </table>
       </div>
     );
   }
 }
 
+CommentText.propTypes = {
+  commentText: PropTypes.object.isRequired
+};
 export default CommentText;

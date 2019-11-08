@@ -2,49 +2,89 @@ import React, { Component } from "react";
 import Comment from "./Comment";
 import { Consumer } from "../../context";
 import MoviePerComment from "../movies/MoviePerComment";
-import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 //import axios from "axios";
 
 class Comments extends Component {
+  onDeleteClick = (id, dispatch) => {
+    // try {
+    //   await axios.delete(
+    //     `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+    //   );
+    //   dispatch({ type: "DELETE_MOVIE", payload: id });
+    // } catch (e) {
+
+    dispatch({ type: "DELETE_COMMENT", payload: id });
+    // }
+  };
   render() {
     const { id } = this.props.match.params;
+    console.log("id");
     console.log(id);
     return (
       <Consumer>
         {value => {
           const { comments, movies } = value;
-
           const commentsPerMovie = comments.filter(
-            comment => comment.movieid == id
+            comment => Number(comment.movieid) === Number(id)
           );
-          const moviesPerMovieID = movies.filter(movie => movie.id == id);
+          const moviesPerMovieID = movies.filter(
+            movie => Number(movie.id) === Number(id)
+          );
 
           return (
             <React.Fragment>
-              <h1 className="display-4 mb-2">
-                <span className="text-primary">Comments v1.0 </span>List
-              </h1>
-              <h4 className="display-6 mb-2">
-                <span className="text-primary">Movie Comments </span>
-              </h4>
+              <header id="main-header" class="py-2 bg-success text-white">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h1>
+                        <i class="fas fa-folder"></i> Commentsper Movie
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </header>
+
+              <section id="search" class="py-4 mb-6 bg-light">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <a href="index.html" class="btn btn-light btn-block">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                      </a>
+                    </div>
+                    <div class="col-md-4">
+                      <a
+                        href="#"
+                        class="btn btn-danger 
+                          btn-block "
+                      >
+                        <i
+                          class="far fa-trash-alt"
+                          onClick="this.onDeleteClick.bind(
+                          this,
+                          comment.id,
+                          dispatch
+                        )"
+                        ></i>
+                        Delete Movie
+                      </a>
+                    </div>
+                    <div class="col-md-4">
+                      <a href="#" class="btn btn-success btn-block">
+                        <i class="fas fa-plus"></i>Add Comment
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
               {moviesPerMovieID.map(movie => (
                 <MoviePerComment key={movie.id} movie={movie} />
               ))}
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item">Comments: </li>
-                <li className="nav-item">
-                  <Link to={`/comments/add/${id}`} className="nav-link">
-                    <i className="fas fa-plus" />
-                    Add Comment
-                  </Link>
-                </li>
-              </ul>
+
               {commentsPerMovie.map(comment => (
-                <Comment
-                  key={comment.commentsid}
-                  movieid={comment.movieid}
-                  comment={comment}
-                />
+                <Comment key={id} movieid={comment.movieid} comment={comment} />
               ))}
             </React.Fragment>
           );
@@ -54,4 +94,7 @@ class Comments extends Component {
   }
 }
 
+// Comments.propTypes = {
+//   id: PropTypes.number.isRequired
+// };
 export default Comments;

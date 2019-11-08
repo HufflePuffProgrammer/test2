@@ -1,16 +1,36 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import TextInputGroup from "../layout/TextInputGroup";
+import PropTypes from "prop-types";
 import axios from "axios";
 
-class MovieAdd extends Component {
-  state = {
-    title: "",
-    desc: "",
-    writer: "",
-    director: "",
-    errors: {}
-  };
+class MovieEdit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      desc: "",
+      writer: "",
+      director: "",
+      errors: {}
+    };
+  }
+
+  async componentDidMount() {
+    const { id } = this.props.match.params;
+    const res = await axios.get(
+      `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+    );
+
+    const movie = res.data;
+
+    this.setState({
+      title: movie.title,
+      desc: movie.desc,
+      writer: movie.writer,
+      director: movie.director
+    });
+  }
 
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
@@ -33,18 +53,23 @@ class MovieAdd extends Component {
       this.setState({ errors: { director: "Director is required" } });
       return;
     }
-    const newMovie = {
+
+    const updMovie = {
       title,
       desc,
       writer,
       director
     };
-    const res = await axios.post(
-      "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies",
-      newMovie
+    const { id } = this.props.match.params;
+    const res = await axios.put(
+      `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`,
+      updMovie
     );
-    dispatch({ type: "ADD_MOVIE", payload: newMovie });
 
+    dispatch({
+      type: "UPDATE_MOVIE",
+      payload: res.data
+    });
     //clear fields
     this.setState({
       title: "",
@@ -67,7 +92,7 @@ class MovieAdd extends Component {
           const { dispatch } = value;
           return (
             <div className="card mb-3">
-              <div className="card-header">Add Movie</div>
+              <div className="card-header">Edit Movie</div>
               <div className="card-body">
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                   <TextInputGroup
@@ -104,7 +129,7 @@ class MovieAdd extends Component {
                   />
                   <input
                     type="submit"
-                    value="Add Movie"
+                    value="Update Movie"
                     className="btn btn-light btn-block"
                   />
                 </form>
@@ -116,4 +141,7 @@ class MovieAdd extends Component {
     );
   }
 }
-export default MovieAdd;
+MovieEdit.propTypes = {
+  id: PropTypes.number.isRequired
+};
+export default MovieEdit;

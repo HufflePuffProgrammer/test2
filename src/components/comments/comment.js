@@ -1,29 +1,40 @@
 import React, { Component } from "react";
+import { Consumer } from "../../context";
 import CommentText from "./CommentText";
 import { Link } from "react-router-dom";
-class Comment extends Component {
-  render() {
-    const comment = this.props.comment;
+import PropTypes from "prop-types";
 
+class Comment extends Component {
+  onDeleteClick = (id, dispatch) => {
+    // try {
+    //   await axios.delete(
+    //     `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+    //   );
+    //   dispatch({ type: "DELETE_MOVIE", payload: id });
+    // } catch (e) {
+
+    dispatch({ type: "DELETE_COMMENT", payload: id });
+    // }
+  };
+
+  render() {
     return (
-      <React.Fragment>
-        <ul className="list-group">
-          <CommentText commentText={comment} />
-          <Link to={`/comments/edit/${comment.movieid}`}>
-            <i
-              className="fas fa-pencil-alt"
-              style={{
-                cursor: "pointer",
-                float: "right",
-                color: "black",
-                marginRight: "1rem"
-              }}
-            />
-          </Link>
-        </ul>
-      </React.Fragment>
+      <Consumer>
+        {value => {
+          const { dispatch } = value;
+          const { comment } = this.props;
+          return (
+            <React.Fragment>
+              <CommentText commentText={comment} />
+            </React.Fragment>
+          );
+        }}
+      </Consumer>
     );
   }
 }
 
+Comment.propTypes = {
+  comment: PropTypes.object.isRequired
+};
 export default Comment;

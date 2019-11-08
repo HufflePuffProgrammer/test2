@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Consumer } from "../../context";
 import Checkbox from "../checkboxes/Checkbox";
 import uuid from "uuid";
+import PropTypes from "prop-types";
+import classnames from "classnames";
 
 class CommentAdd extends Component {
   constructor(props) {
@@ -10,8 +12,8 @@ class CommentAdd extends Component {
     this.state = {
       commentText: "",
       checkboxes: [],
-      movieid: this.props.match.params
-      // isSelectedBox: false
+      movieid: this.props.match.params,
+      errors: {}
     };
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
@@ -40,6 +42,11 @@ class CommentAdd extends Component {
     e.preventDefault();
     const { commentText, checkboxes, movieid } = this.state;
 
+    //Check for Errors
+    if (commentText === "") {
+      this.setState({ errors: { comment_text: "Comment is required" } });
+      return;
+    }
     const newComment = {
       id: uuid(),
       movieid: movieid,
@@ -54,8 +61,6 @@ class CommentAdd extends Component {
       dialogue_poor: checkboxes.dialogue_poor,
       comment_text: commentText
     };
-
-    //Check for Errors
 
     //Call reducer and dispatch
     //const res = axios.post(
@@ -95,28 +100,71 @@ class CommentAdd extends Component {
   handleTextboxChange = e => this.setState({ [e.target.name]: e.target.value });
 
   createCheckboxes = () => {
+    const { checkboxes } = this.state;
     return (
       <div>
         <Checkbox
           genre_id="opening_poor"
           label="Poor Opening"
           key="opening_poor"
-          isSelected={this.state.checkboxes["opening_poor"]}
+          isSelected={checkboxes["opening_poor"]}
           onCheckboxChange={this.handleCheckboxChange}
         />
         <Checkbox
           genre_id="chararc_poor"
           label="Poor Character Arc"
           key="chararc_poor"
-          isSelected={this.state.checkboxes["chararc_poor"]}
+          isSelected={checkboxes["chararc_poor"]}
           onCheckboxChange={this.handleCheckboxChange}
         />
         <Checkbox
           genre_id="dialogue_poor"
           label="Poor Dialogue"
           key="dialogue_poor"
-          isSelected={this.state.checkboxes["dialogue_poor"]}
+          isSelected={checkboxes["dialogue_poor"]}
           onCheckboxChange={this.handleCheckboxChange}
+        />
+        <Checkbox
+          genre_id="dialogue_good"
+          label="Good Dialogue"
+          key="dialogue_good"
+          onCheckboxChange={this.handleCheckboxChange}
+          isSelected={checkboxes["dialogue_good"]}
+        />
+        <Checkbox
+          genre_id="chararc_good"
+          label="Good Character Arc"
+          key="chararc_good"
+          onCheckboxChange={this.handleCheckboxChange}
+          isSelected={checkboxes["chararc_good"]}
+        />
+        <Checkbox
+          genre_id="opening_good"
+          label="Good Opening"
+          key="opening_good"
+          onCheckboxChange={this.handleCheckboxChange}
+          isSelected={checkboxes["opening_good"]}
+        />
+        <Checkbox
+          genre_id="fooltriumphant"
+          label="Fool Triumphant"
+          key="fooltriumphant"
+          onCheckboxChange={this.handleCheckboxChange}
+          isSelected={checkboxes["fooltriumphant"]}
+        />
+        <Checkbox
+          genre_id="superhero"
+          label="Super Hero"
+          key="superhero"
+          onCheckboxChange={this.handleCheckboxChange}
+          isSelected={checkboxes["superhero"]}
+        />
+        <Checkbox
+          genre_id="goldenfleece"
+          label="Golden Fleece"
+          key="goldenfleece"
+          onCheckboxChange={this.handleCheckboxChange}
+          isSelected={checkboxes["goldenfleece"]}
         />
 
         <button
@@ -139,7 +187,7 @@ class CommentAdd extends Component {
   };
 
   render() {
-    const { commentText } = this.state;
+    const { errors } = this.state;
 
     return (
       <Consumer>
@@ -152,16 +200,28 @@ class CommentAdd extends Component {
                 <form onSubmit={this.onSubmit.bind(this, dispatch)}>
                   <div className="form-group">
                     {this.createCheckboxes()}
-
                     <label htmlFor="label">Comment: </label>
 
-                    <input
-                      type="text"
-                      name="commentText"
-                      value={commentText}
-                      placeholder="Type your comment"
-                      onChange={this.handleTextboxChange}
-                    />
+                    <div className="form-group">
+                      <textarea
+                        name="commentText"
+                        rows="5"
+                        id="commentText"
+                        placeholder="Type your comment"
+                        className={classnames(
+                          "form-control form-control-sm mb-3",
+                          {
+                            "is-invalid": errors.comment_text
+                          }
+                        )}
+                        onChange={this.handleTextboxChange}
+                      />
+                      {errors.comment_text && (
+                        <div className="invalid-feedback">
+                          {errors.comment_text}
+                        </div>
+                      )}
+                    </div>
                   </div>
 
                   <input
@@ -178,4 +238,8 @@ class CommentAdd extends Component {
     );
   }
 }
+// CommentAdd.propTypes = {
+//   id: PropTypes.number.isRequired
+// };
+
 export default CommentAdd;

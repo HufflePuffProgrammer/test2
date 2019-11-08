@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import TextInputGroup from "../layout/TextInputGroup";
-
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 
@@ -93,54 +91,85 @@ class MovieEdit extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <div className="card mb-3">
-              <div className="card-header">Edit Movie</div>
-              <div className="card-body">
-                <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                  <TextInputGroup
-                    name="title"
-                    label="Title"
-                    value={title}
-                    placeHolder="Enter the Title"
-                    onChange={this.onChange}
-                    error={errors.title}
-                  />
-                  <TextInputGroup
-                    name="desc"
-                    label="Desc"
-                    value={desc}
-                    placeHolder="Enter the Description"
-                    onChange={this.onChange}
-                    error={errors.desc}
-                  />
-                  <TextInputGroup
-                    name="writer"
-                    label="Writer"
-                    value={writer}
-                    placeHolder="Enter the Writer"
-                    onChange={this.onChange}
-                    error={errors.writer}
-                  />
-                  <TextInputGroup
-                    name="director"
-                    label="Director"
-                    value={director}
-                    placeHolder="Enter the Director"
-                    onChange={this.onChange}
-                    error={errors.director}
-                  />
-                  <input
-                    type="submit"
-                    value="Update Movie"
-                    className="btn btn-light btn-block"
-                  />
-                </form>
+            <section id="movie">
+              <div className="container">
+                <div className="row">
+                  <div className="col">
+                    <div className="card mb-3">
+                      <div className="card-header">
+                        <h5>Edit Movie</h5>
+                      </div>
+                      <div className="card-body">
+                        <form onSubmit={this.onSubmit.bind(this, dispatch)}>
+                          <TextInputGroup
+                            type="text"
+                            name="title"
+                            label="Title"
+                            value={title}
+                            placeHolder="Enter the Title"
+                            onChange={this.onChange}
+                            error={errors.title}
+                          />
+                          <TextInputGroup
+                            type="text"
+                            name="director"
+                            label="Director"
+                            value={director}
+                            placeHolder="Enter the Director"
+                            onChange={this.onChange}
+                            error={errors.director}
+                          />
+                          <TextInputGroup
+                            type="text"
+                            name="writer"
+                            label="Writer"
+                            value={writer}
+                            placeHolder="Enter the Writer"
+                            onChange={this.onChange}
+                            error={errors.writer}
+                          />
+
+                          <div class="form-group">
+                            <label for="desc">Summary</label>
+                            <textarea name="desc" class="form-control" rows="3">
+                              Please summarize
+                            </textarea>
+                          </div>
+                          <section id="actions" class="py-1 mb-1 bg-light">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a
+                                    href="index.html"
+                                    class="btn btn-light btn-block"
+                                  >
+                                    <i class="fas fa-arrow-left"></i>Back
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <input
+                                    type="submit"
+                                    value="Update Movie"
+                                    className="btn btn-primary btn-block"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </section>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            </section>
           );
         }}
       </Consumer>
     );
   }
 }
+MovieEdit.propTypes = {
+  id: PropTypes.number.isRequired
+};
 export default MovieEdit;

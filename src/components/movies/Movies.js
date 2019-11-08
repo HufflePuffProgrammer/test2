@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Movie from "./Movie";
 import { Consumer } from "../../context";
 
