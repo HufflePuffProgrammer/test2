@@ -143,14 +143,16 @@
       "title": "Star Wars: Rise of the Skywalkers",
       "desc": "A long Time ago...",
       "writer": "JJ Abrahms",
-      "director": "JJ Abrahms"
+      "director": "JJ Abrahms",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMDljNTQ5ODItZmQwMy00M2ExLTljOTQtZTVjNGE2NTg0NGIxXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_SY1000_CR0,0,675,1000_AL_.jpg"
     },
     {
       "id": 5,
       "title": "Spy Who Dumped me",
       "desc": "Audrey and Morgan are best friends who unwittingly become entangled in an international conspiracy ",
       "writer": "David Iserson",
-      "director": "Susanna Fogel"
+      "director": "Susanna Fogel",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNDY1MTA0NjgyN15BMl5BanBnXkFtZTgwMTEzNDQ4NTM@._V1_SY1000_CR0,0,648,1000_AL_.jpg"
     }
   ]
 }

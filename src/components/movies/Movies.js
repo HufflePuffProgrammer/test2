@@ -32,15 +32,17 @@ class Movies extends Component {
                           <th width="40%">Movie</th>
                           <th width="40%">Comments</th>
                         </thead>
-                        {movies.map(movie => (
-                          <Movie key={movie.id} movie={movie} />
-                        ))}
+                        <tbody>
+                          {movies.map(movie => (
+                            <Movie key={movie.id} movie={movie} />
+                          ))}
+                        </tbody>
                       </table>
                     </div>
                   </div>
                 </div>
                 <h1 className="display-4 mb-2">
-                  <span className="text-primary">Movie </span>List
+                  <span className="text-primary">1Movie </span>List
                 </h1>
                 {movies.map(movie => (
                   <Movie key={movie.id} movie={movie} />
