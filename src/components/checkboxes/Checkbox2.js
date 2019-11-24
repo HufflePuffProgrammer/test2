@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
 function Checkbox({ genre_id, label, isSelected, onCheckboxChange }) {
   return (
     <React.Fragment>
-      <div class="form-check">
-        <label for={label} class="form-check-label">
+      <div className="checkbox">
+        <label>
           <input
             type="checkbox"
-            id={genre_id}
             key={genre_id}
+            name={label}
+            value={genre_id}
             onChange={onCheckboxChange}
             checked={isSelected}
             className="form-check-input"

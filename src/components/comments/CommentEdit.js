@@ -11,7 +11,7 @@ class CommentEdit extends Component {
     let listCheckboxes = [];
     listCheckboxes["chararc_poor"] = false;
     listCheckboxes["opening_poor"] = false;
-    listCheckboxes["dialogue_poor"] = true;
+    listCheckboxes["dialogue_poor"] = false;
     listCheckboxes["opening_good"] = false;
     listCheckboxes["chararc_good"] = false;
     listCheckboxes["dialogue_good"] = false;
@@ -20,7 +20,7 @@ class CommentEdit extends Component {
     listCheckboxes["fooltriumphant"] = false;
 
     this.state = {
-      id: 0,
+      id: this.props.match.params,
       movieid: 0,
       commentText: "",
       checkboxes: listCheckboxes,
@@ -59,7 +59,7 @@ class CommentEdit extends Component {
 
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
-    const { id, movieid, commentText, checkboxes } = this.state;
+    const { id, commentText, checkboxes, movieid } = this.state;
 
     //Check for Errors
     if (commentText === "") {
@@ -100,7 +100,7 @@ class CommentEdit extends Component {
       checkboxes: [],
       errors: {}
     });
-    this.props.history.push(`/comments/${movieid}`);
+    this.props.history.push(`/`);
   };
 
   handleCheckboxChange(event) {
@@ -124,87 +124,124 @@ class CommentEdit extends Component {
   deselectAll = () => this.selectAllCheckboxes(false);
   handleTextboxChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  createCheckboxes = checkboxes => {
+  createPoorCheckboxes = () => {
+    const { checkboxes } = this.state;
     return (
-      <div>
+      <div class="col-sm-4">
+        <div>
+          <h6>
+            <strong>Poor Points</strong>
+          </h6>
+        </div>
         <Checkbox
           genre_id="opening_poor"
-          label="Poor Opening"
+          label="Opening"
           key="opening_poor"
-          onCheckboxChange={this.handleCheckboxChange}
           isSelected={checkboxes["opening_poor"]}
+          onCheckboxChange={this.handleCheckboxChange}
         />
         <Checkbox
-          genre_id="chararc_poor"
-          label="Poor Character Arc"
-          key="chararc_poor"
+          genre_id="premise_poor"
+          label="Premise"
+          key="premise_poor"
+          isSelected={checkboxes["premise_poor"]}
           onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["chararc_poor"]}
+        />
+        <Checkbox
+          genre_id="character_poor"
+          label="Character"
+          key="character_poor"
+          isSelected={checkboxes["character_poor"]}
+          onCheckboxChange={this.handleCheckboxChange}
         />
         <Checkbox
           genre_id="dialogue_poor"
-          label="Poor Dialogue"
+          label="Dialogue"
           key="dialogue_poor"
-          onCheckboxChange={this.handleCheckboxChange}
           isSelected={checkboxes["dialogue_poor"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
+      </div>
+    );
+  };
+  createGoodCheckboxes = () => {
+    const { checkboxes } = this.state;
+    return (
+      <div class="col-sm-4">
+        <div>
+          <h6>
+            <strong>Good Points</strong>
+          </h6>
+        </div>
+        <Checkbox
+          genre_id="opening_good"
+          label="Opening"
+          key="opening_good"
+          isSelected={checkboxes["opening_good"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
+        <Checkbox
+          genre_id="premise_good"
+          label="Premise"
+          key="premise_good"
+          isSelected={checkboxes["premise_good"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
+        <Checkbox
+          genre_id="character_good"
+          label="Character"
+          key="character_good"
+          isSelected={checkboxes["character_good"]}
+          onCheckboxChange={this.handleCheckboxChange}
         />
         <Checkbox
           genre_id="dialogue_good"
-          label="Good Dialogue"
+          label="Dialogue"
           key="dialogue_good"
-          onCheckboxChange={this.handleCheckboxChange}
           isSelected={checkboxes["dialogue_good"]}
-        />
-        <Checkbox
-          genre_id="chararc_good"
-          label="Good Character Arc"
-          key="chararc_good"
           onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["chararc_good"]}
         />
+      </div>
+    );
+  };
+
+  createGenreCheckboxes = () => {
+    const { checkboxes } = this.state;
+    return (
+      <div class="col-sm-4">
+        <div>
+          <h6>
+            <strong>Genres</strong>
+          </h6>
+        </div>
         <Checkbox
-          genre_id="opening_good"
-          label="Good Opening"
-          key="opening_good"
+          genre_id="dude_with_a_problem"
+          label="Dude with a problem"
+          key="dude_with_a_problem"
+          isSelected={checkboxes["dude_with_a_problem"]}
           onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["opening_good"]}
         />
         <Checkbox
-          genre_id="fooltriumphant"
-          label="Fool Triumphant"
-          key="fooltriumphant"
-          onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["fooltriumphant"]}
-        />
-        <Checkbox
-          genre_id="superhero"
-          label="Super Hero"
-          key="superhero"
-          onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["superhero"]}
-        />
-        <Checkbox
-          genre_id="goldenfleece"
+          genre_id="golden_fleece"
           label="Golden Fleece"
-          key="goldenfleece"
+          key="golden_fleece"
+          isSelected={checkboxes["golden_fleece"]}
           onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["goldenfleece"]}
         />
-        <button
-          type="button"
-          className="btn btn-outline-primary mr-2"
-          onClick={this.selectAll}
-        >
-          {" "}
-          Select All
-        </button>
-        <button
-          type="button"
-          className="btn btn-outline-primary mr-2"
-          onClick={this.deselectAll}
-        >
-          Deselect All
-        </button>
+        <Checkbox
+          genre_id="buddy_love"
+          label="Buddy Love"
+          key="buddy_love"
+          isSelected={checkboxes["buddy_love"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
+        <Checkbox
+          genre_id="institutionalized"
+          label="Institutionalized"
+          key="institutionalized"
+          isSelected={checkboxes["institutionalized"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
       </div>
     );
   };
@@ -217,41 +254,118 @@ class CommentEdit extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <div className="card mb-3">
-              <div className="card-header">Update Comment</div>
-              <div className="card-body">
-                <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                  <div className="form-group">
-                    {this.createCheckboxes(checkboxes)}
-                    <label htmlFor="label">Comment: </label>
-
-                    <textarea
-                      name="commentText"
-                      class="form-control form-control-sm mb-3"
-                      rows="5"
-                      id="commentText"
-                      placeholder="Type your comment"
-                      className={classnames(
-                        "form-control form-control-sm mb-3",
-                        {
-                          "is-invalid": errors.comment_text
-                        }
-                      )}
-                      onChange={this.handleTextboxChange}
-                      value={commentText}
-                    />
-                    {errors.comment_text && (
-                      <div className="invalid-feedback">
-                        {errors.comment_text}
-                      </div>
-                    )}
+            <div>
+              <header id="main-header" class="py-2 bg-warning text-white">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h1>
+                        <i class="far fa-comments"></i> Comment Edit
+                      </h1>
+                    </div>
                   </div>
-                  <input
-                    type="submit"
-                    value="Update Comment"
-                    className="btn btn-light btn-block"
-                  />
-                </form>
+                </div>
+              </header>
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <form onSubmit={this.onSubmit.bind(this, dispatch)}>
+                          <div class="row">
+                            {this.createGoodCheckboxes()}
+                            {this.createPoorCheckboxes()}
+                            {this.createGenreCheckboxes()}
+
+                            <button
+                              type="button"
+                              className="btn btn-outline-primary mr-2"
+                              onClick={this.selectAll}
+                            >
+                              {" "}
+                              Select All
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-outline-primary mr-2"
+                              onClick={this.deselectAll}
+                            >
+                              Deselect All
+                            </button>
+                          </div>
+                          <div class="row mt-4"></div>
+
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="form-group">
+                                <label for="title">
+                                  {" "}
+                                  <strong>Title</strong>
+                                </label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Please enter a title"
+                                />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="form-group">
+                                <label for="body">
+                                  <strong>Comment</strong>
+                                </label>
+                                <textarea
+                                  name="editor1"
+                                  class="form-control"
+                                  placeholder="Please enter a comment"
+                                ></textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="card mb-3">
+                <div className="card-header">Update Comment</div>
+                <div className="card-body">
+                  <form onSubmit={this.onSubmit.bind(this, dispatch)}>
+                    <div className="form-group">
+                      createcheckbox
+                      <label htmlFor="label">Comment: </label>
+                      <textarea
+                        name="commentText"
+                        class="form-control form-control-sm mb-3"
+                        rows="5"
+                        id="commentText"
+                        placeholder="Type your comment"
+                        className={classnames(
+                          "form-control form-control-sm mb-3",
+                          {
+                            "is-invalid": errors.comment_text
+                          }
+                        )}
+                        onChange={this.handleTextboxChange}
+                        value={commentText}
+                      />
+                      {errors.comment_text && (
+                        <div className="invalid-feedback">
+                          {errors.comment_text}
+                        </div>
+                      )}
+                    </div>
+                    <input
+                      type="submit"
+                      value="Update Comment"
+                      className="btn btn-light btn-block"
+                    />
+                  </form>
+                </div>
               </div>
             </div>
           );

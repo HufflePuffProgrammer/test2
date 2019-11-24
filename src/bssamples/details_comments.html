@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Richard's Bootstrap Theme</title>
+  </head>
+  <body>
+    <!-- START HERE -->
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">Blogen</a>
+        <button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav">
+            <li class="nav-item px-2">
+              <a href="index.html" class="nav-link">Dashbaord</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="posts.html" class="nav-link">Posts</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="categories.html" class="nav-link">Categories</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="users.html" class="nav-link">Users</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown mr-3">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                ><i class="fas fa-user"></i>Welcome Stud</a
+              >
+              <div class="dropdown-menu">
+                <a href="profile.html" class="dropdown-item"
+                  ><i class="fas fa-user-circle"></i>Profile</a
+                >
+                <a href="settings.html" class="dropdown-item"
+                  ><i class="fas fa-cog"></i> Settings</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="login.html" class="nav-link"
+                ><i class="fas fa-user-times"></i> Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="main-header" class="py-2 bg-warning text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h1><i class="far fa-comments"></i> Comments</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <section id="posts">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h4>Add Comment - Star Wars the Rise of Skywalker</h4>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                  <div class="col-sm-2">
+                    <div><h6><strong>Good Points</strong></h6></div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="check1" class="form-check-input">
+                        <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>                
+                  </div>
+                  <div class="col-sm-2">
+                      <div class="row mt-4"></div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>                
+                  </div>
+                  <div class="col-sm-2">   
+                      <div class="row mt-4"></div>              
+                      <div class="form-check">
+                        <input type="checkbox" id="check1" class="form-check-input">
+                        <label for="check1" class="form-check-label">Character Dev</label>
+                      </div>
+                      <div class="form-check">
+                          <input type="checkbox" id="check1" class="form-check-input">
+                          <label for="check1" class="form-check-label">Character Dev</label>
+                      </div>                
+                    </div>
+                  </div>  
+                <div class="row mt-4">  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div><h6><strong>Bad Points</strong></h6></div>
+                      <div class="form-check">
+                        <input type="checkbox" id="check1" class="form-check-input">
+                        <label for="check1" class="form-check-label">Character Dev</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" id="check1" class="form-check-input">
+                        <label for="check1" class="form-check-label">Character Dev</label>
+                      </div>                
+                    </div>
+                    <div class="col-sm-2">
+                    <div class="form-check">
+                      <div class="row mt-4"></div>
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>                
+                    </div>
+                    <div class="col-sm-2">                 
+                      <div class="form-check">
+                      <div class="row mt-4"></div>
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" id="check1" class="form-check-input">
+                        <label for="check1" class="form-check-label">Character Dev</label>
+                      </div>                
+                    </div>
+                  </div>
+  
+                  <div class="row mt-4">  </div>
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <div><h6><strong>Genres</strong></h6></div>
+                      <div class="form-check">
+                        <input type="checkbox" id="check1" class="form-check-input">
+                        <label for="check1" class="form-check-label">Buddy Buddy</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" id="check1" class="form-check-input">
+                        <label for="check1" class="form-check-label">Golden Fleece</label>
+                      </div>                
+                    </div>
+                    <div class="col-sm-2">
+                    <div class="form-check">
+                      <div class="row mt-4"></div>
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Coming of Age</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Superhero</label>
+                    </div>                
+                    </div>
+                    <div class="col-sm-2">                 
+                      <div class="form-check">
+                      <div class="row mt-4"></div>
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Monster in the House</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="checkbox" id="check1" class="form-check-input">
+                        <label for="check1" class="form-check-label">Out of the Bottle</label>
+                      </div>                
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="title"><strong>Title</strong></label>
+                    <input type="text" class="form-control" value="Post One" placeholder="Title">
+                  </div>
+                  <div class="form-group">
+                    <label for="body"><strong>Comment</strong></label>
+                    <textarea name="editor1" class="form-control" >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit unde repellendus quis consectetur aliquid aliquam sit eius, tempora sequi. Voluptate fugit minima qui dignissimos. Quasi earum nihil debitis, sint fugiat voluptatem atque accusantium ex beatae sequi repellendus nemo soluta neque eveniet excepturi saepe assumenda deleniti, vel doloribus, illum deserunt officia?</textarea>
+                  </div>
+                </form>
+              </div><!-- BODY-->
+            </div><!-- CARD-->
+          </div><!-- COL-->
+        </div><!-- ROW-->
+      </div><!-- CONTAINER-->
+      </section>
+  
+    <!-- ACTIONS -->
+    <section id="actions" class="py-4 mb-4 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <a href="index.html" class="btn btn-light btn-block"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+          </div>
+          <div class="col-md-3">
+            <a href="index.html" class="btn btn-warning btn-block" >
+            <i class="fas fa-check"></i> Save Changes</a> 
+            </div>    
+          
+        </div>
+      </div>
+    </section>
+  <!-- MODALS -->
+
+<!-- POSTS -->
+
+<section id="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Add Comment - Star Wars the Rise of Skywalker</h4>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                <div class="col-sm-2">
+                  <div><h6><strong>Good Points</strong></h6></div>
+                  <div class="form-check">
+                    <input type="checkbox" id="check1" class="form-check-input">
+                    <label for="check1" class="form-check-label">Character Dev</label>
+                  </div>
+                  <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                  </div>                
+                </div>
+                <div class="col-sm-2">
+                    <div class="row mt-4"></div>
+                  <div class="form-check">
+                    <input type="checkbox" id="check1" class="form-check-input">
+                    <label for="check1" class="form-check-label">Character Dev</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" id="check1" class="form-check-input">
+                    <label for="check1" class="form-check-label">Character Dev</label>
+                  </div>                
+                </div>
+                <div class="col-sm-2">   
+                    <div class="row mt-4"></div>              
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" id="check1" class="form-check-input">
+                        <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>                
+                  </div>
+                </div>  
+              <div class="row mt-4">  </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    <div><h6><strong>Bad Points</strong></h6></div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>                
+                  </div>
+                  <div class="col-sm-2">
+                  <div class="form-check">
+                    <div class="row mt-4"></div>
+                    <input type="checkbox" id="check1" class="form-check-input">
+                    <label for="check1" class="form-check-label">Character Dev</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" id="check1" class="form-check-input">
+                    <label for="check1" class="form-check-label">Character Dev</label>
+                  </div>                
+                  </div>
+                  <div class="col-sm-2">                 
+                    <div class="form-check">
+                    <div class="row mt-4"></div>
+                    <input type="checkbox" id="check1" class="form-check-input">
+                    <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Character Dev</label>
+                    </div>                
+                  </div>
+                </div>
+
+                <div class="row mt-4">  </div>
+                <div class="row">
+                  <div class="col-sm-2">
+                    <div><h6><strong>Genres</strong></h6></div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Buddy Buddy</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Golden Fleece</label>
+                    </div>                
+                  </div>
+                  <div class="col-sm-2">
+                  <div class="form-check">
+                    <div class="row mt-4"></div>
+                    <input type="checkbox" id="check1" class="form-check-input">
+                    <label for="check1" class="form-check-label">Coming of Age</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" id="check1" class="form-check-input">
+                    <label for="check1" class="form-check-label">Superhero</label>
+                  </div>                
+                  </div>
+                  <div class="col-sm-2">                 
+                    <div class="form-check">
+                    <div class="row mt-4"></div>
+                    <input type="checkbox" id="check1" class="form-check-input">
+                    <label for="check1" class="form-check-label">Monster in the House</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" id="check1" class="form-check-input">
+                      <label for="check1" class="form-check-label">Out of the Bottle</label>
+                    </div>                
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="title"><strong>Title</strong></label>
+                  <input type="text" class="form-control" value="Post One" placeholder="Title">
+                </div>
+                <div class="form-group">
+                  <label for="body"><strong>Comment</strong></label>
+                  <textarea name="editor2" class="form-control" >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit unde repellendus quis consectetur aliquid aliquam sit eius, tempora sequi. Voluptate fugit minima qui dignissimos. Quasi earum nihil debitis, sint fugiat voluptatem atque accusantium ex beatae sequi repellendus nemo soluta neque eveniet excepturi saepe assumenda deleniti, vel doloribus, illum deserunt officia?</textarea>
+                </div>
+              </form>
+            </div><!-- BODY-->
+          </div><!-- CARD-->
+        </div><!-- COL-->
+      </div><!-- ROW-->
+    </div><!-- CONTAINER-->
+    </section>
+
+<!-- FOOTER -->
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"
+></script>
+
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+  integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+  crossorigin="anonymous"
+></script>
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<script>
+  //-- Get t.text(new Date().getFullYear());he current year for the copyright --
+  $("#year").text(new Date().getFullYear());
+
+  CKEDITOR.replace( 'editor2' );
+
+</script>
+  </body>
+</html>

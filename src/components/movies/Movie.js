@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Consumer } from "../../context";
-import Comment from "../comments/Comment";
+import CommentPerMovie from "../comments/CommentPerMovie";
 import axios from "axios";
 
 class Movie extends Component {
@@ -41,18 +41,23 @@ class Movie extends Component {
           const { dispatch } = value;
           const { comments } = value;
 
-          const newComments = comments.filter(
+          const firstCommentPerMovie = comments.filter(
             comment => comment.movieid === id
           );
 
           return (
             <tr>
               <td>
-                <img src={poster} alt={title} class="img-thumbnail"></img>
+                <Link to={`movie/edit/${id}`}>
+                  <img src={poster} alt={title} class="img-thumbnail"></img>
+                </Link>
               </td>
               <td>
                 <div class="row">
-                  <h4>{title}</h4>
+                  <h4>
+                    {" "}
+                    <Link to={`/comments/${id}`}>{title}</Link>
+                  </h4>
                 </div>
                 <div class="row">
                   <text class="mr-1 font-weight-bold">Dir: </text> {director}
@@ -65,32 +70,11 @@ class Movie extends Component {
                 </div>
               </td>
               <td>
-                <div class="row">
-                  <div class="col">
-                    <small class="mr-1 text-muted">Poor:</small> 1Opening,
-                    Character
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <small class="mr-1 text-muted">Good:</small> Effects,
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <small class="text-muted">Genre: </small>Golden Fleece
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    1This movie will blow big time just like the Death Lorem
-                    ipsum dolor, sit amet consectetur adipisicing elit.
-                    Voluptatum,{" "}
-                    <a href="#">
-                      <i class="fas fa-angle-double-right"></i>More Comments
-                    </a>
-                  </div>
-                </div>
+                <table class="table">
+                  {firstCommentPerMovie.slice(0, 1).map(comment => (
+                    <CommentPerMovie key={id} movieid={id} comment={comment} />
+                  ))}
+                </table>
               </td>
             </tr>
           );

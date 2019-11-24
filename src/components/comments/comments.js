@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Comment from "./Comment";
 import { Consumer } from "../../context";
-import MoviePerComment from "../movies/MoviePerComment";
+import MovieAlone from "../movies/MovieAlone";
 import PropTypes from "prop-types";
 //import axios from "axios";
 
@@ -19,8 +19,7 @@ class Comments extends Component {
   };
   render() {
     const { id } = this.props.match.params;
-    console.log("id");
-    console.log(id);
+
     return (
       <Consumer>
         {value => {
@@ -35,11 +34,11 @@ class Comments extends Component {
           return (
             <React.Fragment>
               <header id="main-header" class="py-0 bg-success text-white">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-6">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-6">
                       <h1>
-                        <i class="fas fa-folder"></i> Comments per Movie
+                        <i className="fas fa-folder"></i> Comments per Movie
                       </h1>
                     </div>
                   </div>
@@ -47,21 +46,21 @@ class Comments extends Component {
               </header>
 
               <section id="search" class="py-2 mb-6 bg-light">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <a href="index.html" class="btn btn-light btn-block">
-                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-4">
+                      <a href="/" class="btn btn-light btn-block">
+                        <i className="fas fa-arrow-left"></i> Back to Dashboard
                       </a>
                     </div>
-                    <div class="col-md-4">
+                    <div className="col-md-4">
                       <a
                         href="#"
-                        class="btn btn-danger 
+                        className="btn btn-danger 
                           btn-block "
                       >
                         <i
-                          class="far fa-trash-alt"
+                          className="far fa-trash-alt"
                           onClick="this.onDeleteClick.bind(
                           this,
                           comment.id,
@@ -71,27 +70,35 @@ class Comments extends Component {
                         Delete Movie
                       </a>
                     </div>
-                    <div class="col-md-4">
-                      <a href="#" class="btn btn-success btn-block">
-                        <i class="fas fa-plus"></i>Add Comment
+                    <div className="col-md-4">
+                      <a
+                        href={`/comments/add/${id}`}
+                        className="btn btn-success btn-block"
+                      >
+                        <i className="fas fa-plus"></i>Add Comment
                       </a>
                     </div>
                   </div>
                 </div>
               </section>
               <section id="movie">
-                {moviesPerMovieID.map(movie => (
-                  <MoviePerComment key={movie.id} movie={movie} />
-                ))}
+                <table className="table">
+                  {moviesPerMovieID.map(movie => (
+                    <MovieAlone key={movie.id} movie={movie} />
+                  ))}
+                </table>
               </section>
 
-              <div class="row">
-                <div class="col md-9">
+              <div className="row">
+                <div className="col md-9">
                   <section id="header">
-                    <header id="main-header" class="py-1 bg-success text-white">
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-md-6">
+                    <header
+                      id="main-header"
+                      className="py-1 bg-success text-white"
+                    >
+                      <div className="container">
+                        <div className="row">
+                          <div className="col-md-6">
                             <h6>Comments</h6>
                           </div>
                         </div>
@@ -99,7 +106,7 @@ class Comments extends Component {
                     </header>
                   </section>
 
-                  <table class="table table-striped">
+                  <table className="table table-striped">
                     <tbody>
                       {commentsPerMovie.map(comment => (
                         <Comment

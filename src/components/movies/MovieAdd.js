@@ -39,10 +39,10 @@ class MovieAdd extends Component {
       writer,
       director
     };
-    const res = await axios.post(
-      "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies",
-      newMovie
-    );
+    //const res = await axios.post(
+    //  "https://my-json-server.typicode.com/hufflepuffprogrammer///test2/movies",
+    //  newMovie
+    //);
     dispatch({ type: "ADD_MOVIE", payload: newMovie });
 
     //clear fields
@@ -66,49 +66,91 @@ class MovieAdd extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <div className="card mb-3">
-              <div className="card-header">Add Movie</div>
-              <div className="card-body">
-                <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                  <TextInputGroup
-                    name="title"
-                    label="Title"
-                    value={title}
-                    placeHolder="Enter the Title"
-                    onChange={this.onChange}
-                    error={errors.title}
-                  />
-                  <TextInputGroup
-                    name="desc"
-                    label="Desc"
-                    value={desc}
-                    placeHolder="Enter the Description"
-                    onChange={this.onChange}
-                    error={errors.desc}
-                  />
-                  <TextInputGroup
-                    name="writer"
-                    label="Writer"
-                    value={writer}
-                    placeHolder="Enter the Writer"
-                    onChange={this.onChange}
-                    error={errors.writer}
-                  />
-                  <TextInputGroup
-                    name="director"
-                    label="Director"
-                    value={director}
-                    placeHolder="Enter the Director"
-                    onChange={this.onChange}
-                    error={errors.director}
-                  />
-                  <input
-                    type="submit"
-                    value="Add Movie"
-                    className="btn btn-light btn-block"
-                  />
-                </form>
-              </div>
+            <div>
+              <header id="main-header" class="py-1 bg-warning text-white">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h4>
+                        <i class="fas fa-film"></i> Movies
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </header>
+
+              <section id="movie">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <div class="card">
+                        <div class="card-body">
+                          <form onSubmit={this.onSubmit.bind(this, dispatch)}>
+                            <div class="form-group">
+                              <TextInputGroup
+                                type="text"
+                                name="title"
+                                label="Title"
+                                value={title}
+                                placeHolder="Enter the Title"
+                                onChange={this.onChange}
+                                error={errors.title}
+                              />
+                            </div>
+
+                            <TextInputGroup
+                              name="director"
+                              label="Director"
+                              value={director}
+                              placeHolder="Enter the Director"
+                              onChange={this.onChange}
+                              error={errors.director}
+                            />
+                            <TextInputGroup
+                              name="writer"
+                              label="Writer"
+                              value={writer}
+                              placeHolder="Enter the Writer"
+                              onChange={this.onChange}
+                              error={errors.writer}
+                            />
+
+                            <div class="form-group">
+                              <label for="body">
+                                <strong>Summary</strong>
+                              </label>
+                              <textarea name="editor1" class="form-control">
+                                Please summarize
+                              </textarea>
+                            </div>
+                            <input
+                              type="submit"
+                              value="Add Movie"
+                              className="btn btn-light btn-block"
+                            />
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section id="actions" class="py-4 mb-4 bg-light">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <a href="index.html" class="btn btn-light btn-block">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                      </a>
+                    </div>
+                    <div class="col-md-3">
+                      <a href="index.html" class="btn btn-warning btn-block">
+                        <i class="fas fa-check"></i> Save Changes
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
             </div>
           );
         }}

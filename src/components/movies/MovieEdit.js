@@ -140,7 +140,7 @@ class MovieEdit extends Component {
                               <div class="row">
                                 <div class="col-md-3">
                                   <a
-                                    href="index.html"
+                                    href="javascript: history.go(-1)"
                                     class="btn btn-light btn-block"
                                   >
                                     <i class="fas fa-arrow-left"></i>Back

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class CommentText extends Component {
+class CommentPerMovieText extends Component {
   commentGenreText = commentText => {
     const { superhero, goldenfleece, fooltriumphant } = commentText;
     let genreString = "";
@@ -66,37 +66,36 @@ class CommentText extends Component {
   };
 
   render() {
-    const { commentText } = this.props;
-    const { title, user, id } = commentText;
-
+    const { commentText, movieid } = this.props;
+    const { title, user } = commentText;
     return (
-      <tr>
-        <td>
-          <div>
-            <strong>
-              <a href={`/comments/edit/${id}`}>{title}</a>
-            </strong>{" "}
-            by <a href={`/users/user/${id}`}>User: {user}</a>{" "}
-            <small>Date: 12/26/2019</small>
-          </div>
+      <div>
+        <div>
+          <strong>{title}</strong> by <a href="#">User: {user}</a>{" "}
+          <small>Date: 12/26/2019</small>
+        </div>
 
-          <div>
-            <strong>Genres</strong> {this.commentGenreText(commentText)}
-          </div>
-          <div>
-            <strong>Good </strong> {this.commentCharsGoodText(commentText)}{" "}
-          </div>
-          <div>
-            <strong>Poor</strong> {this.commentCharsPoorText(commentText)}
-          </div>
-          <div>{this.commentText(commentText)}</div>
-        </td>
-      </tr>
+        <div>
+          <strong>Genres</strong> {this.commentGenreText(commentText)}
+        </div>
+        <div>
+          <strong>Good </strong> {this.commentCharsGoodText(commentText)}{" "}
+        </div>
+        <div>
+          <strong>Poor</strong> {this.commentCharsPoorText(commentText)}
+        </div>
+        <div>
+          {this.commentText(commentText)}
+          <a href={`comments/${movieid}`}>
+            <i class="fas fa-angle-double-right"></i>More Comments
+          </a>
+        </div>
+      </div>
     );
   }
 }
 
-CommentText.propTypes = {
+CommentPerMovieText.propTypes = {
   commentText: PropTypes.object.isRequired
 };
-export default CommentText;
+export default CommentPerMovieText;
