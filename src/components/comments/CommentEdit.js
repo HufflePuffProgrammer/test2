@@ -9,15 +9,22 @@ class CommentEdit extends Component {
   constructor(props) {
     super(props);
     let listCheckboxes = [];
-    listCheckboxes["chararc_poor"] = false;
-    listCheckboxes["opening_poor"] = false;
-    listCheckboxes["dialogue_poor"] = false;
+
     listCheckboxes["opening_good"] = false;
-    listCheckboxes["chararc_good"] = false;
+    listCheckboxes["premise_good"] = false;
+    listCheckboxes["character_good"] = false;
     listCheckboxes["dialogue_good"] = false;
+
+    listCheckboxes["opening_poor"] = false;
+    listCheckboxes["premise_poor"] = false;
+    listCheckboxes["character_poor"] = false;
+    listCheckboxes["dialogue_poor"] = false;
+
+    listCheckboxes["dude_with_a_problem"] = false;
+    listCheckboxes["golden_fleece"] = false;
+    listCheckboxes["buddy_love"] = false;
+    listCheckboxes["institutionalized"] = false;
     listCheckboxes["superhero"] = false;
-    listCheckboxes["goldenfleece"] = false;
-    listCheckboxes["fooltriumphant"] = false;
 
     this.state = {
       id: this.props.match.params,
@@ -40,14 +47,20 @@ class CommentEdit extends Component {
 
     let listCheckboxes = [];
     listCheckboxes["opening_poor"] = comment.opening_poor;
-    listCheckboxes["chararc_poor"] = comment.chararc_poor;
+    listCheckboxes["premise_poor"] = comment.premise_poor;
+    listCheckboxes["character_poor"] = comment.character_poor;
     listCheckboxes["dialogue_poor"] = comment.dialogue_poor;
+
     listCheckboxes["opening_good"] = comment.opening_good;
-    listCheckboxes["chararc_good"] = comment.chararc_good;
+    listCheckboxes["premise_good"] = comment.premise_good;
+    listCheckboxes["character_good"] = comment.character_good;
     listCheckboxes["dialogue_good"] = comment.dialogue_good;
+
+    listCheckboxes["dude_with_a_problem"] = comment.dude_with_a_problem;
+    listCheckboxes["golden_fleece"] = comment.golden_fleece;
+    listCheckboxes["buddy_love"] = comment.buddy_love;
+    listCheckboxes["institutionalized"] = comment.institutionalized;
     listCheckboxes["superhero"] = comment.superhero;
-    listCheckboxes["goldenfleece"] = comment.goldenfleece;
-    listCheckboxes["fooltriumphant"] = comment.fooltriumphant;
 
     this.setState({
       id: comment.id,
@@ -72,14 +85,20 @@ class CommentEdit extends Component {
       movieid,
       comment_text: commentText,
       opening_poor: checkboxes["opening_poor"],
-      chararc_poor: checkboxes["chararc_poor"],
+      premise_poor: checkboxes["premise_poor"],
+      character_poor: checkboxes["character_poor"],
       dialogue_poor: checkboxes["dialogue_poor"],
+
       opening_good: checkboxes["opening_good"],
-      chararc_good: checkboxes["chararc_good"],
+      premise_good: checkboxes["premise_good"],
+      character_good: checkboxes["character_good"],
       dialogue_good: checkboxes["dialogue_good"],
-      superhero: checkboxes["superhero"],
-      goldenfleece: checkboxes["goldenfleece"],
-      fooltriumphant: checkboxes["fooltriumphant"]
+
+      dude_with_a_problem: checkboxes["dude_with_a_problem"],
+      golden_fleece: checkboxes["golden_fleece"],
+      buddy_love: checkboxes["buddy_love"],
+      institutionalized: checkboxes["institutionalized"],
+      superhero: checkboxes["superhero"]
     };
     // const { id } = this.props.match.params;
     // const res = await axios.put(
@@ -240,6 +259,13 @@ class CommentEdit extends Component {
           label="Institutionalized"
           key="institutionalized"
           isSelected={checkboxes["institutionalized"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
+        <Checkbox
+          genre_id="superhero"
+          label="Superhero"
+          key="superhero"
+          isSelected={checkboxes["superhero"]}
           onCheckboxChange={this.handleCheckboxChange}
         />
       </div>
