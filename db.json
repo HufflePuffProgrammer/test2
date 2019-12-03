@@ -12,6 +12,7 @@
       "opening_good": true,
       "character_good": true,
       "dialogue_good": true,
+      "premise_good": true,
       "opening_poor": true,
       "character_poor": true,
       "dialogue_poor": true,

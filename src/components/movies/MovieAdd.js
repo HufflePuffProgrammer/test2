@@ -21,16 +21,16 @@ class MovieAdd extends Component {
       this.setState({ errors: { title: "Title is required" } });
       return;
     }
-    if (desc === "") {
-      this.setState({ errors: { desc: "Description is required" } });
+    if (director === "") {
+      this.setState({ errors: { director: "Director is required" } });
       return;
     }
     if (writer === "") {
       this.setState({ errors: { writer: "Writer is required" } });
       return;
     }
-    if (director === "") {
-      this.setState({ errors: { director: "Director is required" } });
+    if (desc === "") {
+      this.setState({ errors: { desc: "Description is required" } });
       return;
     }
     const newMovie = {
@@ -39,11 +39,12 @@ class MovieAdd extends Component {
       writer,
       director
     };
+
     //const res = await axios.post(
     //  "https://my-json-server.typicode.com/hufflepuffprogrammer///test2/movies",
     //  newMovie
     //);
-    dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    //dispatch({ type: "ADD_MOVIE", payload: newMovie });
 
     //clear fields
     this.setState({
@@ -86,17 +87,15 @@ class MovieAdd extends Component {
                       <div class="card">
                         <div class="card-body">
                           <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                            <div class="form-group">
-                              <TextInputGroup
-                                type="text"
-                                name="title"
-                                label="Title"
-                                value={title}
-                                placeHolder="Enter the Title"
-                                onChange={this.onChange}
-                                error={errors.title}
-                              />
-                            </div>
+                            <TextInputGroup
+                              type="text"
+                              name="title"
+                              label="Title"
+                              value={title}
+                              placeHolder="Enter the Title"
+                              onChange={this.onChange}
+                              error={errors.title}
+                            />
 
                             <TextInputGroup
                               name="director"
@@ -115,19 +114,36 @@ class MovieAdd extends Component {
                               error={errors.writer}
                             />
 
-                            <div class="form-group">
-                              <label for="body">
-                                <strong>Summary</strong>
-                              </label>
-                              <textarea name="editor1" class="form-control">
-                                Please summarize
-                              </textarea>
-                            </div>
-                            <input
-                              type="submit"
-                              value="Add Movie"
-                              className="btn btn-light btn-block"
+                            <TextInputGroup
+                              type="text"
+                              name="desc"
+                              label="Description"
+                              value={desc}
+                              placeHolder="Enter a Description"
+                              onChange={this.onChange}
+                              error={errors.desc}
                             />
+                            <section id="actions" class="py-4 mb-4 bg-light">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <a
+                                      href="index.html"
+                                      class="btn btn-light btn-block"
+                                    >
+                                      <i class="fas fa-arrow-left"></i> Back to
+                                      Dashboard
+                                    </a>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <input
+                                      class="btn btn-warning btn-block"
+                                      type="submit"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </section>
                           </form>
                         </div>
                       </div>
@@ -137,18 +153,7 @@ class MovieAdd extends Component {
               </section>
               <section id="actions" class="py-4 mb-4 bg-light">
                 <div class="container">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <a href="index.html" class="btn btn-light btn-block">
-                        <i class="fas fa-arrow-left"></i> Back to Dashboard
-                      </a>
-                    </div>
-                    <div class="col-md-3">
-                      <a href="index.html" class="btn btn-warning btn-block">
-                        <i class="fas fa-check"></i> Save Changes
-                      </a>
-                    </div>
-                  </div>
+                  <input className="btn btn-warning btn-block" type="submit" />
                 </div>
               </section>
             </div>

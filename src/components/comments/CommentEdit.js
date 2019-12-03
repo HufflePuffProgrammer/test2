@@ -4,6 +4,7 @@ import Checkbox from "../checkboxes/Checkbox";
 import PropTypes from "prop-types";
 import axios from "axios";
 import classnames from "classnames";
+import TextInputGroup from "../layout/TextInputGroup";
 
 class CommentEdit extends Component {
   constructor(props) {
@@ -29,9 +30,10 @@ class CommentEdit extends Component {
     this.state = {
       id: this.props.match.params,
       movieid: 0,
+      title: "",
+      user: "",
       commentText: "",
       checkboxes: listCheckboxes,
-      commentText: "",
       errors: {}
     };
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
@@ -62,9 +64,14 @@ class CommentEdit extends Component {
     listCheckboxes["institutionalized"] = comment.institutionalized;
     listCheckboxes["superhero"] = comment.superhero;
 
+    console.log("Mount");
+    console.log(listCheckboxes);
+
     this.setState({
       id: comment.id,
       movieid: comment.movieid,
+      title: comment.title,
+      user: comment.user,
       commentText: comment.comment_text,
       checkboxes: listCheckboxes
     });
@@ -72,11 +79,15 @@ class CommentEdit extends Component {
 
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
-    const { id, commentText, checkboxes, movieid } = this.state;
+    const { id, commentText, checkboxes, movieid, user, title } = this.state;
 
     //Check for Errors
     if (commentText === "") {
       this.setState({ errors: { comment_text: "Comment is required" } });
+      return;
+    }
+    if (title === "") {
+      this.setState({ errors: { title: "Title is required" } });
       return;
     }
     //updComment has updated data in component
@@ -84,6 +95,8 @@ class CommentEdit extends Component {
       id,
       movieid,
       comment_text: commentText,
+      title,
+      user,
       opening_poor: checkboxes["opening_poor"],
       premise_poor: checkboxes["premise_poor"],
       character_poor: checkboxes["character_poor"],
@@ -111,15 +124,20 @@ class CommentEdit extends Component {
       payload: updComment
     });
 
+    console.log("updComment");
+    console.log(updComment);
+
     //Clear fields
     this.setState({
       id,
       movieid,
+      title,
+      user,
       commentText,
       checkboxes: [],
       errors: {}
     });
-    this.props.history.push(`/`);
+    //this.props.history.push(`/`);
   };
 
   handleCheckboxChange(event) {
@@ -271,9 +289,9 @@ class CommentEdit extends Component {
       </div>
     );
   };
-
+  onChange = e => this.setState({ [e.target.name]: e.target.value });
   render() {
-    const { checkboxes, commentText, errors } = this.state;
+    var { title, commentText, user, errors } = this.state;
 
     return (
       <Consumer>
@@ -323,74 +341,68 @@ class CommentEdit extends Component {
 
                           <div class="row">
                             <div class="col-sm-12">
-                              <div class="form-group">
-                                <label for="title">
-                                  {" "}
-                                  <strong>Title</strong>
-                                </label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  placeholder="Please enter a title"
-                                />
-                              </div>
+                              <TextInputGroup
+                                type="text"
+                                name="title"
+                                label="Title"
+                                value={title}
+                                placeHolder=""
+                                onChange={this.onChange}
+                                error={errors.title}
+                              />
                             </div>
                           </div>
-
                           <div class="row">
                             <div class="col-sm-12">
-                              <div class="form-group">
-                                <label for="body">
-                                  <strong>Comment</strong>
-                                </label>
-                                <textarea
-                                  name="editor1"
-                                  class="form-control"
-                                  placeholder="Please enter a comment"
-                                ></textarea>
-                              </div>
+                              <TextInputGroup
+                                type="text"
+                                name="user"
+                                label="User"
+                                value={user}
+                                placeHolder=""
+                                onChange={this.onChange}
+                                error={errors.user}
+                              />
                             </div>
                           </div>
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <TextInputGroup
+                                type="text"
+                                name="commentText"
+                                label="Comment"
+                                value={commentText}
+                                placeHolder=""
+                                onChange={this.onChange}
+                                error={errors.comment_text}
+                              />
+                            </div>
+                          </div>
+                          <section id="actions" class="py-4 mb-4 bg-light">
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <a
+                                    href="index.html"
+                                    class="btn btn-light btn-block"
+                                  >
+                                    <i class="fas fa-arrow-left"></i> Back to
+                                    Dashboard
+                                  </a>
+                                </div>
+                                <div class="col-md-3">
+                                  <input
+                                    class="btn btn-warning btn-block"
+                                    type="submit"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </section>
                         </form>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div className="card mb-3">
-                <div className="card-header">Update Comment</div>
-                <div className="card-body">
-                  <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                    <div className="form-group">
-                      createcheckbox
-                      <label htmlFor="label">Comment: </label>
-                      <textarea
-                        name="commentText"
-                        class="form-control form-control-sm mb-3"
-                        rows="5"
-                        id="commentText"
-                        placeholder="Type your comment"
-                        className={classnames(
-                          "form-control form-control-sm mb-3",
-                          {
-                            "is-invalid": errors.comment_text
-                          }
-                        )}
-                        onChange={this.handleTextboxChange}
-                        value={commentText}
-                      />
-                      {errors.comment_text && (
-                        <div className="invalid-feedback">
-                          {errors.comment_text}
-                        </div>
-                      )}
-                    </div>
-                    <input
-                      type="submit"
-                      value="Update Comment"
-                      className="btn btn-light btn-block"
-                    />
-                  </form>
                 </div>
               </div>
             </div>

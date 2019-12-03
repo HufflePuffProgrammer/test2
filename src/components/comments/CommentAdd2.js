@@ -79,7 +79,8 @@ class CommentAdd extends Component {
 
   handleCheckboxChange(event) {
     const { value } = event.target;
-
+    console.log("handlecheckboxchange");
+    console.log(value);
     this.setState(prevState => ({
       checkboxes: {
         ...prevState.checkboxes,

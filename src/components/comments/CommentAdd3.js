@@ -35,6 +35,7 @@ class CommentAdd extends Component {
     listCheckboxes["golden_fleece"] = false;
     listCheckboxes["buddy_love"] = false;
     listCheckboxes["institutionalized"] = false;
+    listCheckboxes["superhero"] = false;
     const { id } = this.props.match.params;
 
     this.setState({
@@ -69,17 +70,15 @@ class CommentAdd extends Component {
       user,
       title,
       movieid: movieid,
-      dude_with_a_problem: checkboxes.dude_with_a_problem,
+      superhero: checkboxes.superhero,
       golden_fleece: checkboxes.golden_fleece,
-      buddy_love: checkboxes.buddy_love,
-      institutionalized: checkboxes.institutionalized,
+      fool_triumphant: checkboxes.fool_triumphant,
+      dude_with_a_problem: checkboxes.dude_with_a_problem,
       opening_good: checkboxes.opening_good,
-      premise_good: checkboxes.premise_good,
-      character_good: checkboxes.character_good,
+      chararc_good: checkboxes.chararc_good,
       dialogue_good: checkboxes.dialogue_good,
       opening_poor: checkboxes.opening_poor,
-      premise_poor: checkboxes.premise_poor,
-      character_poor: checkboxes.character_poor,
+      chararc_poor: checkboxes.chararc_poor,
       dialogue_poor: checkboxes.dialogue_poor,
       comment_text: commentText
     };
@@ -91,8 +90,7 @@ class CommentAdd extends Component {
     //);
 
     //dispatch({ type: "ADD_COMMENT", payload: newComment });
-    console.log("Add Comment");
-    console.log(newComment);
+
     this.deselectAll();
     this.setState({
       title: "",
@@ -101,7 +99,7 @@ class CommentAdd extends Component {
       errors: {}
     });
 
-    //this.props.history.push(`/comments/${movieid}`);
+    this.props.history.push(`/comments/${movieid}`);
   };
 
   handleCheckboxChange(event) {
@@ -139,7 +137,7 @@ class CommentAdd extends Component {
           genre_id="opening_poor"
           label="Opening"
           key="opening_poor"
-          isSelected="false"
+          isSelected="true"
           onCheckboxChange={this.handleCheckboxChange}
         />
         <Checkbox
@@ -249,23 +247,20 @@ class CommentAdd extends Component {
   };
   createCheckboxes = () => {
     const { checkboxes } = this.state;
-    console.log("opening_poor");
-    console.log(checkboxes["opening_poor"]);
     return (
       <div>
         <Checkbox
           genre_id="opening_poor"
           label="Poor Opening"
           key="opening_poor"
-          checked="false"
           isSelected={checkboxes["opening_poor"]}
           onCheckboxChange={this.handleCheckboxChange}
         />
         <Checkbox
-          genre_id="characterpoor"
+          genre_id="chararc_poor"
           label="Poor Character Arc"
-          key="character_poor"
-          isSelected={checkboxes["character_poor"]}
+          key="chararc_poor"
+          isSelected={checkboxes["chararc_poor"]}
           onCheckboxChange={this.handleCheckboxChange}
         />
         <Checkbox
@@ -283,11 +278,11 @@ class CommentAdd extends Component {
           isSelected={checkboxes["dialogue_good"]}
         />
         <Checkbox
-          genre_id="character_good"
+          genre_id="chararc_good"
           label="Good Character Arc"
-          key="character_good"
+          key="chararc_good"
           onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["character_good"]}
+          isSelected={checkboxes["chararc_good"]}
         />
         <Checkbox
           genre_id="opening_good"
@@ -340,6 +335,7 @@ class CommentAdd extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   render() {
     const { id } = this.props.match.params;
+
     const { title, commentText, user, errors } = this.state;
 
     return (
