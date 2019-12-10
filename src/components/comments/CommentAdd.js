@@ -66,33 +66,39 @@ class CommentAdd extends Component {
 
     const newComment = {
       id: uuid(),
-      user,
+      movieid,
+      comment_text: commentText,
       title,
-      movieid: movieid,
-      dude_with_a_problem: checkboxes.dude_with_a_problem,
-      golden_fleece: checkboxes.golden_fleece,
-      buddy_love: checkboxes.buddy_love,
-      institutionalized: checkboxes.institutionalized,
-      opening_good: checkboxes.opening_good,
-      premise_good: checkboxes.premise_good,
-      character_good: checkboxes.character_good,
-      dialogue_good: checkboxes.dialogue_good,
-      opening_poor: checkboxes.opening_poor,
-      premise_poor: checkboxes.premise_poor,
-      character_poor: checkboxes.character_poor,
-      dialogue_poor: checkboxes.dialogue_poor,
-      comment_text: commentText
+      user,
+
+      opening_poor: checkboxes["opening_poor"],
+      premise_poor: checkboxes["premise_poor"],
+      character_poor: checkboxes["character_poor"],
+      dialogue_poor: checkboxes["dialogue_poor"],
+
+      opening_good: checkboxes["opening_good"],
+      premise_good: checkboxes["premise_good"],
+      character_good: checkboxes["character_good"],
+      dialogue_good: checkboxes["dialogue_good"],
+
+      dude_with_a_problem: checkboxes["dude_with_a_problem"],
+      golden_fleece: checkboxes["golden_fleece"],
+      buddy_love: checkboxes["buddy_love"],
+      institutionalized: checkboxes["institutionalized"],
+      superhero: checkboxes["superhero"]
     };
 
-    //Call reducer and dispatch
-    //const res = axios.post(
-    // "https://my-json-server.typicode.com/hufflepuffprogrammer/test2/comments",
-    //  newComment
-    //);
+    try {
+      // Implement DB
+      // const res = await axios.post(
+      //         "https://jsonplaceholder.typicode.com/users",
+      //         newContact
+      //       );
+      dispatch({ type: "ADD_COMMENT", payload: newComment });
+    } catch (e) {
+      dispatch({ type: "ADD_COMMENT", payload: newComment });
+    }
 
-    //dispatch({ type: "ADD_COMMENT", payload: newComment });
-    console.log("Add Comment");
-    console.log(newComment);
     this.deselectAll();
     this.setState({
       title: "",
@@ -101,16 +107,16 @@ class CommentAdd extends Component {
       errors: {}
     });
 
-    //this.props.history.push(`/comments/${movieid}`);
+    this.props.history.push(`/comments/${movieid}`);
   };
 
   handleCheckboxChange(event) {
-    const { value } = event.target;
+    const { name } = event.target;
 
     this.setState(prevState => ({
       checkboxes: {
         ...prevState.checkboxes,
-        [value]: !prevState.checkboxes[value]
+        [name]: !prevState.checkboxes[name]
       }
     }));
   }
@@ -139,7 +145,7 @@ class CommentAdd extends Component {
           genre_id="opening_poor"
           label="Opening"
           key="opening_poor"
-          isSelected="false"
+          isSelected={checkboxes["opening_poor"]}
           onCheckboxChange={this.handleCheckboxChange}
         />
         <Checkbox
@@ -244,20 +250,25 @@ class CommentAdd extends Component {
           isSelected={checkboxes["institutionalized"]}
           onCheckboxChange={this.handleCheckboxChange}
         />
+        <Checkbox
+          genre_id="superhero"
+          label="Superhero"
+          key="superhero"
+          isSelected={checkboxes["superhero"]}
+          onCheckboxChange={this.handleCheckboxChange}
+        />
       </div>
     );
   };
   createCheckboxes = () => {
     const { checkboxes } = this.state;
-    console.log("opening_poor");
-    console.log(checkboxes["opening_poor"]);
+
     return (
       <div>
         <Checkbox
           genre_id="opening_poor"
           label="Poor Opening"
           key="opening_poor"
-          checked="false"
           isSelected={checkboxes["opening_poor"]}
           onCheckboxChange={this.handleCheckboxChange}
         />

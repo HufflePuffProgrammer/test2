@@ -5,9 +5,11 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Test from "./components/testpages/Test";
+import Search from "./components/search/Search";
 import Movies from "./components/movies/Movies";
 import MovieAdd from "./components/movies/MovieAdd";
 import MovieEdit from "./components/movies/MovieEdit";
+import MovieView from "./components/movies/MovieView";
 import Comments from "./components/comments/Comments";
 import CommentAdd from "./components/comments/CommentAdd";
 import CommentEdit from "./components/comments/CommentEdit";
@@ -35,6 +37,8 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Movies} />
                 <Route exact path="/testpages/test" component={Test} />
+                <Route exact path="/search" component={Search} />
+                <Route exact path="/movie/view/:id" component={MovieView} />
                 <Route exact path="/movie/add" component={MovieAdd} />
                 <Route exact path="/movie/edit/:id" component={MovieEdit} />
                 <Route exact path="/about" component={About} />

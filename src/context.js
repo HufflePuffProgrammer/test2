@@ -36,7 +36,6 @@ const reducer = (state, action) => {
             : comment
         )
       };
-
     case "DELETE_COMMENT":
       return {
         ...state,

@@ -71,8 +71,8 @@ class CommentPerMovieText extends Component {
     return (
       <div>
         <div>
-          <strong>{title}</strong> by <a href="#">User: {user}</a>{" "}
-          <small>Date: 12/26/2019</small>
+          <strong>{title}</strong> by User: {user}{" "}
+          <small> Date: 12/26/2019</small>
         </div>
 
         <div>

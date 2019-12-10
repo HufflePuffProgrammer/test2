@@ -9,6 +9,7 @@ import TextInputGroup from "../layout/TextInputGroup";
 class CommentEdit extends Component {
   constructor(props) {
     super(props);
+
     let listCheckboxes = [];
 
     listCheckboxes["opening_good"] = false;
@@ -39,6 +40,18 @@ class CommentEdit extends Component {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
+  onDeleteClick = (id, dispatch) => {
+    try {
+      // await axios.delete(
+      //   `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+      //  );
+      dispatch({ type: "DELETE_COMMENT", payload: id });
+    } catch (e) {
+      dispatch({ type: "DELETE_COMMENT", payload: id });
+    }
+    this.props.history.push(`/comments/${this.state.movieid}`);
+  };
+
   async componentDidMount() {
     const { id } = this.props.match.params;
     const res = await axios.get(
@@ -64,9 +77,6 @@ class CommentEdit extends Component {
     listCheckboxes["institutionalized"] = comment.institutionalized;
     listCheckboxes["superhero"] = comment.superhero;
 
-    console.log("Mount");
-    console.log(listCheckboxes);
-
     this.setState({
       id: comment.id,
       movieid: comment.movieid,
@@ -82,12 +92,17 @@ class CommentEdit extends Component {
     const { id, commentText, checkboxes, movieid, user, title } = this.state;
 
     //Check for Errors
-    if (commentText === "") {
-      this.setState({ errors: { comment_text: "Comment is required" } });
-      return;
-    }
+
     if (title === "") {
       this.setState({ errors: { title: "Title is required" } });
+      return;
+    }
+    if (user === "") {
+      this.setState({ errors: { user: "User is required" } });
+      return;
+    }
+    if (commentText === "") {
+      this.setState({ errors: { comment_text: "Comment is required" } });
       return;
     }
     //updComment has updated data in component
@@ -119,13 +134,7 @@ class CommentEdit extends Component {
     //   updComment
     // );
 
-    dispatch({
-      type: "UPDATE_COMMENT",
-      payload: updComment
-    });
-
-    console.log("updComment");
-    console.log(updComment);
+    dispatch({ type: "UPDATE_COMMENT", payload: updComment });
 
     //Clear fields
     this.setState({
@@ -137,16 +146,16 @@ class CommentEdit extends Component {
       checkboxes: [],
       errors: {}
     });
-    //this.props.history.push(`/`);
+    this.props.history.push("/");
   };
 
   handleCheckboxChange(event) {
-    const { value } = event.target;
+    const { name } = event.target;
 
     this.setState(prevState => ({
       checkboxes: {
         ...prevState.checkboxes,
-        [value]: !prevState.checkboxes[value]
+        [name]: !prevState.checkboxes[name]
       }
     }));
   }
@@ -291,12 +300,13 @@ class CommentEdit extends Component {
   };
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   render() {
-    var { title, commentText, user, errors } = this.state;
+    var { title, commentText, user, errors, id } = this.state;
 
     return (
       <Consumer>
         {value => {
           const { dispatch } = value;
+
           return (
             <div>
               <header id="main-header" class="py-2 bg-warning text-white">
@@ -310,6 +320,7 @@ class CommentEdit extends Component {
                   </div>
                 </div>
               </header>
+
               <div class="container">
                 <div class="row">
                   <div class="col">
@@ -382,12 +393,8 @@ class CommentEdit extends Component {
                             <div class="container">
                               <div class="row">
                                 <div class="col-md-3">
-                                  <a
-                                    href="index.html"
-                                    class="btn btn-light btn-block"
-                                  >
-                                    <i class="fas fa-arrow-left"></i> Back to
-                                    Dashboard
+                                  <a href="/" class="btn btn-light btn-block">
+                                    <i class="fas fa-arrow-left"></i> Back
                                   </a>
                                 </div>
                                 <div class="col-md-3">
@@ -395,6 +402,22 @@ class CommentEdit extends Component {
                                     class="btn btn-warning btn-block"
                                     type="submit"
                                   />
+                                </div>
+
+                                <div class="col-md-3">
+                                  <a
+                                    href="#"
+                                    className="btn btn-danger 
+                      btn-block "
+                                    onClick={this.onDeleteClick.bind(
+                                      this,
+                                      id,
+                                      dispatch
+                                    )}
+                                  >
+                                    <i className="far fa-trash-alt"></i>
+                                    Delete
+                                  </a>
                                 </div>
                               </div>
                             </div>

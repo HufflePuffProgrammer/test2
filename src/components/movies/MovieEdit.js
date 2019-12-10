@@ -41,16 +41,16 @@ class MovieEdit extends Component {
       this.setState({ errors: { title: "Title is required" } });
       return;
     }
-    if (desc === "") {
-      this.setState({ errors: { desc: "Description is required" } });
+    if (director === "") {
+      this.setState({ errors: { director: "Director is required" } });
       return;
     }
     if (writer === "") {
       this.setState({ errors: { writer: "Writer is required" } });
       return;
     }
-    if (director === "") {
-      this.setState({ errors: { director: "Director is required" } });
+    if (desc === "") {
+      this.setState({ errors: { desc: "Description is required" } });
       return;
     }
 
@@ -61,14 +61,20 @@ class MovieEdit extends Component {
       director
     };
     const { id } = this.props.match.params;
-    const res = await axios.put(
-      `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`,
-      updMovie
-    );
 
+    console.log("up movie");
+    console.log(updMovie);
+    //const res = await axios.put(
+    //  `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`,
+    //  updMovie
+    // );
+
+    console.log("update movie");
+    console.log(updMovie);
     dispatch({
       type: "UPDATE_MOVIE",
-      payload: res.data
+      // payload: res.data
+      payload: updMovie
     });
     //clear fields
     this.setState({
@@ -91,78 +97,90 @@ class MovieEdit extends Component {
         {value => {
           const { dispatch } = value;
           return (
-            <section id="movie">
-              <div className="container">
-                <div className="row">
-                  <div className="col">
-                    <div className="card mb-3">
-                      <div className="card-header">
-                        <h5>Edit Movie</h5>
-                      </div>
-                      <div className="card-body">
-                        <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                          <TextInputGroup
-                            type="text"
-                            name="title"
-                            label="Title"
-                            value={title}
-                            placeHolder="Enter the Title"
-                            onChange={this.onChange}
-                            error={errors.title}
-                          />
-                          <TextInputGroup
-                            type="text"
-                            name="director"
-                            label="Director"
-                            value={director}
-                            placeHolder="Enter the Director"
-                            onChange={this.onChange}
-                            error={errors.director}
-                          />
-                          <TextInputGroup
-                            type="text"
-                            name="writer"
-                            label="Writer"
-                            value={writer}
-                            placeHolder="Enter the Writer"
-                            onChange={this.onChange}
-                            error={errors.writer}
-                          />
+            <div>
+              <header id="main-header" class="py-1 bg-warning text-white">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h4>
+                        <i class="fas fa-film"></i> Movies Edit
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </header>
 
-                          <div class="form-group">
-                            <label for="desc">Summary</label>
-                            <textarea name="desc" class="form-control" rows="3">
-                              Please summarize
-                            </textarea>
-                          </div>
-                          <section id="actions" class="py-1 mb-1 bg-light">
-                            <div class="container">
-                              <div class="row">
-                                <div class="col-md-3">
-                                  <a
-                                    href="javascript: history.go(-1)"
-                                    class="btn btn-light btn-block"
-                                  >
-                                    <i class="fas fa-arrow-left"></i>Back
-                                  </a>
-                                </div>
-                                <div class="col-md-3">
-                                  <input
-                                    type="submit"
-                                    value="Update Movie"
-                                    className="btn btn-primary btn-block"
-                                  />
+              <section id="movie">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <div class="card">
+                        <div class="card-body">
+                          <form onSubmit={this.onSubmit.bind(this, dispatch)}>
+                            <TextInputGroup
+                              type="text"
+                              name="title"
+                              label="Title"
+                              value={title}
+                              placeHolder="Enter the Title"
+                              onChange={this.onChange}
+                              error={errors.title}
+                            />
+
+                            <TextInputGroup
+                              name="director"
+                              label="Director"
+                              value={director}
+                              placeHolder="Enter the Director"
+                              onChange={this.onChange}
+                              error={errors.director}
+                            />
+                            <TextInputGroup
+                              name="writer"
+                              label="Writer"
+                              value={writer}
+                              placeHolder="Enter the Writer"
+                              onChange={this.onChange}
+                              error={errors.writer}
+                            />
+
+                            <TextInputGroup
+                              type="text"
+                              name="desc"
+                              label="Description"
+                              value={desc}
+                              placeHolder="Enter a Description"
+                              onChange={this.onChange}
+                              error={errors.desc}
+                            />
+                            <section id="actions" class="py-4 mb-4 bg-light">
+                              <div class="container">
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <a
+                                      href="index.html"
+                                      class="btn btn-light btn-block"
+                                    >
+                                      <i class="fas fa-arrow-left"></i>Back
+                                    </a>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <input
+                                      class="btn btn-warning btn-block"
+                                      type="submit"
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </section>
-                        </form>
+                            </section>
+                          </form>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            </div>
           );
         }}
       </Consumer>

@@ -1,7 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-
+import { Consumer } from "../../context";
 class CommentText extends Component {
+  onDeleteClick = (id, dispatch) => {
+    // try {
+    //   await axios.delete(
+    //     `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+    //   );
+    //   dispatch({ type: "DELETE_MOVIE", payload: id });
+    // } catch (e) {
+
+    //dispatch({ type: "DELETE_COMMENT", payload: id });
+    console.log("Deleted Comment Text");
+    // }
+  };
   commentGenreText = commentText => {
     const { superhero, goldenfleece, fooltriumphant } = commentText;
     let genreString = "";
@@ -72,12 +84,33 @@ class CommentText extends Component {
     return (
       <tr>
         <td>
-          <div>
-            <strong>
-              <a href={`/comments/edit/${id}`}>{title}</a>
-            </strong>{" "}
-            by <a href={`/users/user/${id}`}>User: {user}</a>{" "}
-            <small>Date: 12/26/2019</small>
+          <div class="d-flex">
+            <div class="mr-auto p-0 item-hl">
+              <strong>
+                <a href={`/comments/view/${id}`}>{title}</a>
+              </strong>{" "}
+              User: C Text{user}
+              <small>Date: 12/26/2019</small>
+            </div>
+            <div class="p-1 item-hl">
+              <a
+                href={`/comments/edit/${id}`}
+                className="btn btn-warning btn-block "
+              >
+                <i className="fas fa-pencil-alt"></i>
+                Edit
+              </a>
+            </div>
+            <div class="p-1 item-hl">
+              <a
+                href="#"
+                className="btn btn-danger btn-block"
+                onClick="{this.onDeleteClick.bind(this, id, dispatch)}"
+              >
+                <i className="far fa-trash-alt"></i>
+                Delete
+              </a>
+            </div>
           </div>
 
           <div>

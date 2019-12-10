@@ -11,36 +11,26 @@ class Movie extends Component {
     this.state = {
       showMovieInfo: false
     };
-    this.onShowClick = this.onShowClick.bind(this);
   }
 
   onDeleteClick = async (id, dispatch) => {
     try {
-      await axios.delete(
-        `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
-      );
+      // await axios.delete(
+      //   `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+      // );
       dispatch({ type: "DELETE_MOVIE", payload: id });
     } catch (e) {
       dispatch({ type: "DELETE_MOVIE", payload: id });
     }
   };
 
-  onShowClick = () => {
-    this.setState({
-      showMovieInfo: !this.state.showMovieInfo
-    });
-  };
-
   render() {
     const { id, title, desc, writer, director, poster } = this.props.movie;
-    const { showMovieInfo } = this.state;
 
     return (
       <Consumer>
         {value => {
-          const { dispatch } = value;
           const { comments } = value;
-
           const firstCommentPerMovie = comments.filter(
             comment => comment.movieid === id
           );
@@ -48,7 +38,7 @@ class Movie extends Component {
           return (
             <tr>
               <td>
-                <Link to={`movie/edit/${id}`}>
+                <Link to={`movie/view/${id}`}>
                   <img src={poster} alt={title} class="img-thumbnail"></img>
                 </Link>
               </td>
@@ -56,7 +46,7 @@ class Movie extends Component {
                 <div class="row">
                   <h4>
                     {" "}
-                    <Link to={`/comments/${id}`}>{title}</Link>
+                    <Link to={`movie/view/${id}`}>{title}</Link>
                   </h4>
                 </div>
                 <div class="row">

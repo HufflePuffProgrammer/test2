@@ -1,19 +1,10 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
-
+import MovieFiltered from "../movies/MovieFiltered";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-class Comment extends Component {
-  onDeleteClick = (id, dispatch) => {
-    try {
-      // await axios.delete(
-      //   `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
-      //  );
-      dispatch({ type: "DELETE_COMMENT", payload: id });
-    } catch (e) {
-      dispatch({ type: "DELETE_COMMENT", payload: id });
-    }
-  };
+class CommentFilteredDetail extends Component {
   commentGenreText = commentText => {
     const {
       superhero,
@@ -113,53 +104,45 @@ class Comment extends Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch } = value;
-          const { comment } = this.props;
+          const { comment, movieid } = this.props;
           const { title, user, id } = comment;
+          const { movies } = value;
+          const newMovie = movies.filter(movie => movie.id === movieid);
+
+          const { director, writer, desc, poster } = newMovie[0];
           return (
             <React.Fragment>
               <tr>
                 <td>
-                  <div class="d-flex">
-                    <div class="mr-auto p-0 item-hl">
-                      <strong>
-                        <a href={`/comments/view/${id}`}>{title}</a>
-                      </strong>{" "}
-                      User: {user}
-                      <small> 12/26/2019</small>
+                  <div class="row">
+                    <div class="col">
+                      <strong>{title}</strong> User: <small>12/26/2019</small>
                     </div>
-                    <div class="p-1 item-hl">
-                      <a
-                        href={`/comments/edit/${id}`}
-                        className="btn btn-warning btn-block "
-                      >
-                        <i className="fas fa-pencil-alt"></i>
-                        Edit
-                      </a>
-                    </div>
-                    <div class="p-1 item-hl">
-                      <a
-                        href="#"
-                        className="btn btn-danger btn-block"
-                        onClick={this.onDeleteClick.bind(this, id, dispatch)}
-                      >
-                        <i className="far fa-trash-alt"></i>
-                        Delete
-                      </a>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <small class="text-muted">Genre: </small>
+                      {this.commentGenreText(comment)}
                     </div>
                   </div>
 
-                  <div>
-                    <strong>Genres</strong> {this.commentGenreText(comment)}
+                  <div class="row">
+                    <div class="col">
+                      <small class="mr-1 text-muted">Good:</small>{" "}
+                      {this.commentCharsGoodText(comment)}{" "}
+                    </div>
                   </div>
-                  <div>
-                    <strong>Good </strong> {this.commentCharsGoodText(comment)}{" "}
+                  <div class="row">
+                    <div class="col">
+                      <small class="mr-1 text-muted">Poor:</small>{" "}
+                      {this.commentCharsPoorText(comment)}
+                    </div>
                   </div>
-                  <div>
-                    <strong>Poor</strong> {this.commentCharsPoorText(comment)}
+                  <div class="row">
+                    <div class="col">{this.commentText(comment)}</div>
                   </div>
-                  <div>{this.commentText(comment)}</div>
                 </td>
+                <MovieFiltered key={movieid} movieid={movieid} />
               </tr>
             </React.Fragment>
           );
@@ -169,7 +152,7 @@ class Comment extends Component {
   }
 }
 
-Comment.propTypes = {
-  comment: PropTypes.object.isRequired
-};
-export default Comment;
+// CommentFilteredDetail.propTypes = {
+//   comment: PropTypes.object.isRequired
+// };
+export default CommentFilteredDetail;

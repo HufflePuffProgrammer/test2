@@ -21,12 +21,7 @@ const Header = props => {
                 Home
               </a>
             </li>
-            <li className="nav-item">
-              <Link to="/movie/add" className="nav-link">
-                <i className="fas fa-plus" />
-                Add
-              </Link>
-            </li>
+
             <li className="nav-item">
               <Link to="/about" className="nav-link">
                 <i className="fas fa-question" />

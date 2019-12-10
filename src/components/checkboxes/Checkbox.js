@@ -11,8 +11,9 @@ function Checkbox({ genre_id, label, isSelected, onCheckboxChange }) {
             id={genre_id}
             key={genre_id}
             onChange={onCheckboxChange}
-            isSelected={isSelected}
+            checked={isSelected}
             className="form-check-input"
+            name={genre_id}
           />
           {label}
         </label>

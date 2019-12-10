@@ -14,7 +14,8 @@ class Comments extends Component {
     //   dispatch({ type: "DELETE_MOVIE", payload: id });
     // } catch (e) {
 
-    dispatch({ type: "DELETE_COMMENT", payload: id });
+    //dispatch({ type: "DELETE_COMMENT", payload: id });
+    console.log("Deleted Comment");
     // }
   };
   render() {
@@ -38,7 +39,7 @@ class Comments extends Component {
                   <div className="row">
                     <div className="col-md-6">
                       <h1>
-                        <i className="fas fa-folder"></i> Comments per Movie
+                        <i className="fas fa-folder"></i> Comments
                       </h1>
                     </div>
                   </div>
@@ -48,29 +49,13 @@ class Comments extends Component {
               <section id="search" class="py-2 mb-6 bg-light">
                 <div className="container">
                   <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-3">
                       <a href="/" class="btn btn-light btn-block">
-                        <i className="fas fa-arrow-left"></i> Back to Dashboard
+                        <i className="fas fa-arrow-left"></i>Back
                       </a>
                     </div>
-                    <div className="col-md-4">
-                      <a
-                        href="#"
-                        className="btn btn-danger 
-                          btn-block "
-                      >
-                        <i
-                          className="far fa-trash-alt"
-                          onClick="this.onDeleteClick.bind(
-                          this,
-                          comment.id,
-                          dispatch
-                        )"
-                        ></i>
-                        Delete Movie
-                      </a>
-                    </div>
-                    <div className="col-md-4">
+
+                    <div className="col-md-3">
                       <a
                         href={`/comments/add/${id}`}
                         className="btn btn-success btn-block"
@@ -99,7 +84,7 @@ class Comments extends Component {
                       <div className="container">
                         <div className="row">
                           <div className="col-md-6">
-                            <h6>Comments</h6>
+                            <h6></h6>
                           </div>
                         </div>
                       </div>

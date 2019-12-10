@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import TextInputGroup from "../layout/TextInputGroup";
+import uuid from "uuid";
 import axios from "axios";
 
 class MovieAdd extends Component {
   state = {
     title: "",
-    desc: "",
-    writer: "",
     director: "",
+    writer: "",
+    desc: "",
     errors: {}
   };
 
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
-    const { title, desc, writer, director } = this.state;
+    const { title, director, writer, desc, poster } = this.state;
 
     //Check for Errors
     if (title === "") {
@@ -29,38 +30,51 @@ class MovieAdd extends Component {
       this.setState({ errors: { writer: "Writer is required" } });
       return;
     }
+    if (poster === "") {
+      this.setState({ errors: { writer: "Poster is required" } });
+      return;
+    }
     if (desc === "") {
       this.setState({ errors: { desc: "Description is required" } });
       return;
     }
     const newMovie = {
+      id: uuid(),
       title,
-      desc,
+      director,
       writer,
-      director
+      poster,
+      desc
     };
 
-    //const res = await axios.post(
-    //  "https://my-json-server.typicode.com/hufflepuffprogrammer///test2/movies",
-    //  newMovie
-    //);
-    //dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    try {
+      // Implement DB
+      // const res = await axios.post(
+      //         "https://jsonplaceholder.typicode.com/users",
+      //         newMovie
+      //       );
+      dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    } catch (e) {
+      dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    }
 
     //clear fields
     this.setState({
       title: "",
-      desc: "",
-      writer: "",
       director: "",
+      writer: "",
+      poster: "",
+      desc: "",
       errors: {}
     });
+
     this.props.history.push("/");
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { title, desc, writer, director, errors } = this.state;
+    const { title, desc, writer, director, poster, errors } = this.state;
 
     return (
       <Consumer>
@@ -96,7 +110,6 @@ class MovieAdd extends Component {
                               onChange={this.onChange}
                               error={errors.title}
                             />
-
                             <TextInputGroup
                               name="director"
                               label="Director"
@@ -113,6 +126,14 @@ class MovieAdd extends Component {
                               onChange={this.onChange}
                               error={errors.writer}
                             />
+                            <TextInputGroup
+                              name="poster"
+                              label="Poster"
+                              value={poster}
+                              placeHolder="http://www.xxx.com"
+                              onChange={this.onChange}
+                              error={errors.poster}
+                            />
 
                             <TextInputGroup
                               type="text"
@@ -123,7 +144,7 @@ class MovieAdd extends Component {
                               onChange={this.onChange}
                               error={errors.desc}
                             />
-                            <section id="actions" class="py-4 mb-4 bg-light">
+                            <section id="actions" class="py-1 mb-1 bg-light">
                               <div class="container">
                                 <div class="row">
                                   <div class="col-md-3">
@@ -131,8 +152,7 @@ class MovieAdd extends Component {
                                       href="index.html"
                                       class="btn btn-light btn-block"
                                     >
-                                      <i class="fas fa-arrow-left"></i> Back to
-                                      Dashboard
+                                      <i class="fas fa-arrow-left"></i>Back
                                     </a>
                                   </div>
                                   <div class="col-md-3">
@@ -149,11 +169,6 @@ class MovieAdd extends Component {
                       </div>
                     </div>
                   </div>
-                </div>
-              </section>
-              <section id="actions" class="py-4 mb-4 bg-light">
-                <div class="container">
-                  <input className="btn btn-warning btn-block" type="submit" />
                 </div>
               </section>
             </div>
