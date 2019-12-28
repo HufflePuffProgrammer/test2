@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import Select from "react-select";
-import CommentSearchDetail from "../comments/CommentSearchDetail";
+import CommentFilteredDetail from "../comments/CommentFilteredDetail";
 
 //import axios from "axios";
 
@@ -46,6 +46,7 @@ class Search extends Component {
   }
   handleGenreClick = selectedGenreOption => {
     const { value } = selectedGenreOption;
+    console.log("Option selected:", value);
     this.setState({ selectedGenreOptionValue: value });
   };
 
@@ -65,7 +66,7 @@ class Search extends Component {
     return (
       <Consumer>
         {value => {
-          const { comments } = value;
+          const { comments, movies } = value;
           const {
             selectedPoorOptionValue,
             selectedGoodOptionValue,
@@ -165,10 +166,10 @@ class Search extends Component {
               <header id="main-header" class="py-0 bg-success text-white">
                 <div className="container">
                   <div className="row">
-                    <div className="col-md-3">
-                      <h5>
+                    <div className="col-md-6">
+                      <h1>
                         <i class="fas fa-search"></i>Search Movies
-                      </h5>
+                      </h1>
                     </div>
                   </div>
                 </div>
@@ -246,7 +247,7 @@ class Search extends Component {
                       comment === null ? (
                         ""
                       ) : (
-                        <CommentSearchDetail
+                        <CommentFilteredDetail
                           key={comment.movieid}
                           movieid={comment.movieid}
                           comment={comment}

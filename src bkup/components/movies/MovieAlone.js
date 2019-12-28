@@ -17,7 +17,7 @@ class MovieAlone extends Component {
                 <td width="80%">
                   <div class="row">
                     <h4>
-                      <a href={`/movie/detail/${id}`}>{title}</a>
+                      <a href={`/movie/view/${id}`}>{title}</a>
                     </h4>
                   </div>
                   <div class="row">

@@ -3,30 +3,17 @@ import PropTypes from "prop-types";
 
 class CommentPerMovieText extends Component {
   commentGenreText = commentText => {
-    const {
-      dude_with_a_problem,
-      golden_fleece,
-      buddy_love,
-      superhero,
-      institutionalized
-    } = commentText;
+    const { superhero, goldenfleece, fooltriumphant } = commentText;
     let genreString = "";
 
-    if (dude_with_a_problem) {
-      genreString = genreString + "Dude With A Problem, ";
-    }
-    if (golden_fleece) {
-      genreString = genreString + "Golden Fleece, ";
-    }
-    if (buddy_love) {
-      genreString = genreString + "Buddy Love, ";
-    }
     if (superhero) {
       genreString = genreString + "Superhero, ";
     }
-
-    if (institutionalized) {
-      genreString = genreString + "Institutionalized, ";
+    if (fooltriumphant) {
+      genreString = genreString + "Fool Triumphant, ";
+    }
+    if (goldenfleece) {
+      genreString = genreString + "Golden Fleece, ";
     }
 
     let newStr = genreString.substr(0, genreString.length - 2);
@@ -35,22 +22,14 @@ class CommentPerMovieText extends Component {
   };
 
   commentCharsGoodText = commentText => {
-    const {
-      opening_good,
-      premise_good,
-      character_good,
-      dialogue_good
-    } = commentText;
+    const { opening_good, chararc_good, dialogue_good } = commentText;
     let charsGoodString = "";
 
     if (opening_good) {
       charsGoodString = charsGoodString + "Opening, ";
     }
-    if (premise_good) {
-      charsGoodString = charsGoodString + "Premise, ";
-    }
-    if (character_good) {
-      charsGoodString = charsGoodString + "Character, ";
+    if (chararc_good) {
+      charsGoodString = charsGoodString + "Character Arc, ";
     }
     if (dialogue_good) {
       charsGoodString = charsGoodString + "Dialogue, ";
@@ -62,28 +41,22 @@ class CommentPerMovieText extends Component {
   };
 
   commentCharsPoorText = commentText => {
-    const {
-      opening_poor,
-      premise_poor,
-      character_poor,
-      dialogue_poor
-    } = commentText;
-    let charsPoorString = "";
+    const { opening_poor, chararc_poor, dialogue_poor } = commentText;
+    let charsGoodString = "";
 
     if (opening_poor) {
-      charsPoorString = charsPoorString + "Opening, ";
+      charsGoodString = charsGoodString + "Opening, ";
     }
-    if (premise_poor) {
-      charsPoorString = charsPoorString + "Premise, ";
-    }
-    if (character_poor) {
-      charsPoorString = charsPoorString + "Character, ";
+    if (chararc_poor) {
+      charsGoodString = charsGoodString + "Character Arc, ";
     }
     if (dialogue_poor) {
-      charsPoorString = charsPoorString + "Dialogue, ";
+      charsGoodString = charsGoodString + "Dialogue, ";
     }
 
-    return charsPoorString.substr(0, charsPoorString.length - 2);
+    let newStr = charsGoodString.substr(0, charsGoodString.length - 2);
+
+    return newStr;
   };
 
   commentText = commentText => {
@@ -123,7 +96,6 @@ class CommentPerMovieText extends Component {
 }
 
 CommentPerMovieText.propTypes = {
-  commentText: PropTypes.object.isRequired,
-  movieid: PropTypes.number.isRequired
+  commentText: PropTypes.object.isRequired
 };
 export default CommentPerMovieText;

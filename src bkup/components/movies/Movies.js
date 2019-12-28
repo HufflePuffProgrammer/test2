@@ -3,6 +3,17 @@ import Movie from "./Movie";
 import { Consumer } from "../../context";
 
 class Movies extends Component {
+  constructor() {
+    super();
+  }
+  deleteMovie = id => {
+    const { movies } = this.state;
+    let newMovies = movies.filter(movie => movie.id !== id);
+    this.setState({
+      movies: newMovies
+    });
+  };
+
   render() {
     //const { movies } = this.state;
     console.log("Loading");

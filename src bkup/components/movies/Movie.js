@@ -6,6 +6,13 @@ import CommentPerMovie from "../comments/CommentPerMovie";
 import axios from "axios";
 
 class Movie extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showMovieInfo: false
+    };
+  }
+
   onDeleteClick = async (id, dispatch) => {
     try {
       // await axios.delete(
@@ -31,7 +38,7 @@ class Movie extends Component {
           return (
             <tr>
               <td>
-                <Link to={`movie/detail/${id}`}>
+                <Link to={`movie/view/${id}`}>
                   <img src={poster} alt={title} class="img-thumbnail"></img>
                 </Link>
               </td>
@@ -39,7 +46,7 @@ class Movie extends Component {
                 <div class="row">
                   <h4>
                     {" "}
-                    <Link to={`movie/detail/${id}`}>{title}</Link>
+                    <Link to={`movie/view/${id}`}>{title}</Link>
                   </h4>
                 </div>
                 <div class="row">

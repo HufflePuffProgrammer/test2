@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class MovieAlone extends Component {
+class MovieDetailText extends Component {
   render() {
-    const { id, title, desc, writer, director, poster } = this.props.movie;
-
+    const { title, desc, writer, director, poster } = this.props.movie;
     return (
       <div class="container ">
         <div class="row">
@@ -16,9 +15,7 @@ class MovieAlone extends Component {
                 </td>
                 <td width="80%">
                   <div class="row">
-                    <h4>
-                      <a href={`/movie/detail/${id}`}>{title}</a>
-                    </h4>
+                    <h4>{title}</h4>
                   </div>
                   <div class="row">
                     <strong>Dir: </strong> {director}
@@ -39,7 +36,7 @@ class MovieAlone extends Component {
   }
 }
 
-MovieAlone.propTypes = {
+MovieDetailText.propTypes = {
   movie: PropTypes.object.isRequired
 };
-export default MovieAlone;
+export default MovieDetailText;

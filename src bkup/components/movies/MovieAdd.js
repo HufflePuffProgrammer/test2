@@ -47,17 +47,16 @@ class MovieAdd extends Component {
       desc
     };
 
-    // try {
-    //   // Implement DB
-    //   const res = await axios.post(
-    //           "https://jsonplaceholder.typicode.com/users",
-    //           newMovie
-    //         );
-    //   dispatch({ type: "ADD_MOVIE", payload: newMovie });
-    // } catch (e) {
-    //   dispatch({ type: "ADD_MOVIE", payload: newMovie });
-    // }
-    dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    try {
+      // Implement DB
+      // const res = await axios.post(
+      //         "https://jsonplaceholder.typicode.com/users",
+      //         newMovie
+      //       );
+      dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    } catch (e) {
+      dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    }
 
     //clear fields
     this.setState({
@@ -149,7 +148,10 @@ class MovieAdd extends Component {
                               <div class="container">
                                 <div class="row">
                                   <div class="col-md-3">
-                                    <a href="/" class="btn btn-light btn-block">
+                                    <a
+                                      href="index.html"
+                                      class="btn btn-light btn-block"
+                                    >
                                       <i class="fas fa-arrow-left"></i>Back
                                     </a>
                                   </div>

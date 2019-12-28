@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Richard's Bootstrap Theme</title>
+  </head>
+  <body>
+    <!-- START HERE -->
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">Blogen</a>
+        <button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav">
+            <li class="nav-item px-2">
+              <a href="index.html" class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="posts.html" class="nav-link ">Posts</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="categories.html" class="nav-link active" >Categories</a>
+            </li>
+            <li class="nav-item px-2">
+              <a href="users.html" class="nav-link">Users</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown mr-3">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                data-toggle="dropdown"
+                ><i class="fas fa-user"></i>Welcome Stud</a
+              >
+              <div class="dropdown-menu">
+                <a href="profile.html" class="dropdown-item"
+                  ><i class="fas fa-user-circle"></i>Profile</a
+                >
+                <a href="settings.html" class="dropdown-item"
+                  ><i class="fas fa-cog"></i> Settings</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="login.html" class="nav-link"
+                ><i class="fas fa-user-times"></i> Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header id="main-header" class="py-2 bg-success text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h1><i class="fas fa-film"></i></i> Movies</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- ACTIONS -->
+    <section id="search" class="py-4 mb-4 bg-light">
+      <div class="container">
+        <div class="row">
+          <!-- ACTIONS -->              
+          <div class="col-md-3">
+            <a href="#" class="btn btn-primary btn-block" ><i class="fas fa-plus"></i> Add Movie</a>
+          </div>
+          <div class="col-md-6 ml-auto">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search Categories...">
+              <div class="input-group-append">
+                <button class="btn-success">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<!-- Movie List-->
+<section id="movies">
+  <div class="container">
+    <div class="row">
+      <div class="col md-9">
+        
+        <table class="table table-striped">
+          <thead class="thead-dark">        
+            <th width="50%">Comments</th>
+            <th width="20%">Poster</th>
+            <th width="30%">Movie</th>
+          </thead>
+          <tr>         
+            <!--//COMMENT START -->
+            <td>
+              
+            <div class="row">
+              <div class="col"><strong>Disaster Waiting to Happen by User:</strong> She-Ra Date: <small>12/26/2019</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                  <small class="mr-1 text-muted">Poor:</small> Opening, Character
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                  <small class="mr-1 text-muted">Good:</small> Effects,
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                  <small class="text-muted">Genre: </small>Golden Fleece
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                  This movie will blow big time just like the Death Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum,
+              </div>
+            </div>
+          </td>
+          <!--//COMMENT END -->
+          <!-- MOVIE START-->
+          <td><img src="https://static.metacritic.com/images/products/movies/3/e539bd40e3b68ba9e95ad337b30136b2-250h.jpg" alt="Skywalker Risen" class="img-thumbnail">
+          </td>
+          <td >
+            <div class="row"><h4>Rise of Skywalker</h4></div>
+              <div class="row"><text class="mr-1 font-weight-bold">Dir: </text> Jar Jar Abrahms</div>
+            <div class="row"><text class="mr-1 font-weight-bold">Writer: </text>  Kathleen Kennedy</div>
+            <div class="row">
+                <text class="mr-1 font-weight-bold">Summary: </text> When Jay and Silent Bob discover that Hollywood is rebooting an old movie based on them, the clueless duo embark on another cross-country mission to stop it all over again!</div>
+            </td>
+          <!--//MOVIE END -->
+        </tr>
+        <tr>
+           <!--//COMMENT START -->
+           <td>
+              <div class="row">
+                  <div class="col"><strong>Best Movie Yet! by User:</strong> She-Ra Date: <small>12/26/2019</small>
+                  </div>
+                </div>
+              <div class="row">
+                <div class="col">
+                  <small class="mr-1 text-muted">Poor:</small> Dialogue, 
+                </div>
+              </div>
+              <div class="row">
+                <div class="col"><small class="mr-1 text-muted">Good:</small> Character Development</div>
+              </div>
+              <div class="row">
+                <div class="col">
+                <small class="mr-1 text-muted">Genre:</small>Buddy Buddy, Road Trip
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">Laughed my a$$ offf. Better when high Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores, provident laborum natus esse nesciunt eligendi soluta maxime nisi! Accusamus repellat incidunt sint vero perspiciatis magni neque beatae possimus perferendis! Nihil.</div>
+              </div>
+            </td>
+            <!--//COMMENT END -->
+          <!--//MOVIE START -->
+          <td><img src="https://static.metacritic.com/images/products/movies/3/d75ef1a57c19d8f0ca6270c03d1db6eb-250h.jpg" alt="Hay and Silent Bob Reboot" class="img-thumbnail"></td>
+          <td>
+            <div class="row"><h4>Reboot Jay and Silent Bob Strike back</h4></div>
+            <div class="row"><text class="mr-1 font-weight-bold">Dir:</text> Kevin Smith</div>
+            <div class="row"><text class="mr-1 font-weight-bold">Writer:</text> Kevin Smith Writer</div>
+            <div class="row">
+              <text class="mr-1 font-weight-bold">Summary:</text>asdf When asdfasasdf vasdf v asdf  asdfsadf Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime expedita itaque soluta molestiae magni! Dolorum praesentium aliquam soluta similique cumque.
+            </div>
+          </td>
+          <!--//MOVIE END -->
+         
+          </tr>          
+        </table>
+        <!-- PAGINATION -->
+        <nav class="ml-4">
+          <ul class="pagination">
+            <li class="page-item">
+              <a href="" class="page-link">Prev</a>
+            </li>
+            <li class="page-item">
+              <a href="" class="page-link">1</a>
+            </li>
+            <li class="page-item">
+                <a href="" class="page-link">2</a>
+            </li>
+            <li class="page-item">
+                <a href="" class="page-link">3</a>
+            </li>
+            <li class="page-item">
+                <a href="" class="page-link">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+</section>
+<footer id="main-footer" class="bg-dark text-white mt-5 p-5">
+  <div class="container">
+    <div class="row">
+      <div class="col"><p class="lead text-center">Copyright &copy; <span id="year"></span> Blogen</p></div>
+    </div>
+  </div>
+</div>
+<!-- FOOTER -->
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+  crossorigin="anonymous"
+></script>
+
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+  integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  //-- Get t.text(new Date().getFullYear());he current year for the copyright --
+  $("#year").text(new Date().getFullYear());
+
+</script>
+  </body>
+</html>

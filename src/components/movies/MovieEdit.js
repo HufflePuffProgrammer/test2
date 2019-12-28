@@ -12,6 +12,8 @@ class MovieEdit extends Component {
       desc: "",
       writer: "",
       director: "",
+      poster: "",
+      desc: "",
       errors: {}
     };
   }
@@ -23,18 +25,20 @@ class MovieEdit extends Component {
     );
 
     const movie = res.data;
-
+    console.log("movie");
+    console.log(movie);
     this.setState({
       title: movie.title,
       desc: movie.desc,
       writer: movie.writer,
-      director: movie.director
+      director: movie.director,
+      poster: movie.poster
     });
   }
 
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
-    const { title, desc, writer, director } = this.state;
+    const { title, desc, writer, director, poster } = this.state;
 
     //Check for Errors
     if (title === "") {
@@ -49,6 +53,10 @@ class MovieEdit extends Component {
       this.setState({ errors: { writer: "Writer is required" } });
       return;
     }
+    if (poster === "") {
+      this.setState({ errors: { poster: "Poster is required" } });
+      return;
+    }
     if (desc === "") {
       this.setState({ errors: { desc: "Description is required" } });
       return;
@@ -58,44 +66,62 @@ class MovieEdit extends Component {
       title,
       desc,
       writer,
-      director
+      director,
+      poster
     };
     const { id } = this.props.match.params;
 
-    console.log("up movie");
-    console.log(updMovie);
-    //const res = await axios.put(
-    //  `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`,
-    //  updMovie
-    // );
+    const res = await axios.put(
+      `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`,
+      updMovie
+    );
 
-    console.log("update movie");
-    console.log(updMovie);
-    dispatch({
-      type: "UPDATE_MOVIE",
-      // payload: res.data
-      payload: updMovie
-    });
+    try {
+      // Implement DB
+      const res = await axios.put(
+        `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`,
+        updMovie
+      );
+      dispatch({ type: "UPDATE_MOVIE", payload: updMovie });
+    } catch (e) {
+      dispatch({ type: "UPDATE_MOVIE", payload: updMovie });
+    }
+    //dispatch({ type: "UPDATE_MOVIE", payload: updMovie });
+
     //clear fields
     this.setState({
       title: "",
       desc: "",
       writer: "",
       director: "",
+      poster: "",
       errors: {}
     });
-    this.props.history.push("/");
+    this.props.history.push(`/movie/detail/${id}`);
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { title, desc, writer, director, errors } = this.state;
-
+    const { id } = this.props.match.params;
     return (
       <Consumer>
         {value => {
-          const { dispatch } = value;
+          const { movies, dispatch } = value;
+
+          // BUG when I try to remove the first item of the array.
+          // Then access the object's properties. It's undefined.
+          // Please fix.
+          // const moviesFromDB = movies.filter(movie => movie.id === 1);
+          // const myMovie = moviesFromDB.shift();
+          // console.log("Movie from DB after shift()");
+          // console.log(myMovie);
+          // console.log(myMovie.title);
+          //const movie = moviesFromDB[0];
+          // console.log("movie");
+          // console.log(movie);
+
+          const { title, director, writer, desc, poster, errors } = this.state;
           return (
             <div>
               <header id="main-header" class="py-1 bg-warning text-white">
@@ -111,7 +137,9 @@ class MovieEdit extends Component {
               </header>
 
               <section id="movie">
+                {" "}
                 <div class="container">
+                  {" "}
                   <div class="row">
                     <div class="col">
                       <div class="card">
@@ -126,8 +154,8 @@ class MovieEdit extends Component {
                               onChange={this.onChange}
                               error={errors.title}
                             />
-
                             <TextInputGroup
+                              type="text"
                               name="director"
                               label="Director"
                               value={director}
@@ -136,6 +164,7 @@ class MovieEdit extends Component {
                               error={errors.director}
                             />
                             <TextInputGroup
+                              type="text"
                               name="writer"
                               label="Writer"
                               value={writer}
@@ -143,12 +172,20 @@ class MovieEdit extends Component {
                               onChange={this.onChange}
                               error={errors.writer}
                             />
-
+                            <TextInputGroup
+                              type="text"
+                              name="poster"
+                              label="Poster"
+                              value={poster}
+                              placeHolder="http://www.abc.com"
+                              onChange={this.onChange}
+                              error={errors.desc}
+                            />
                             <TextInputGroup
                               type="text"
                               name="desc"
-                              label="Description"
                               value={desc}
+                              label="Description"
                               placeHolder="Enter a Description"
                               onChange={this.onChange}
                               error={errors.desc}

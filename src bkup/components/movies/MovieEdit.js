@@ -1,21 +1,40 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import TextInputGroup from "../layout/TextInputGroup";
-import uuid from "uuid";
+import PropTypes from "prop-types";
 import axios from "axios";
 
-class MovieAdd extends Component {
-  state = {
-    title: "",
-    director: "",
-    writer: "",
-    desc: "",
-    errors: {}
-  };
+class MovieEdit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      desc: "",
+      writer: "",
+      director: "",
+      errors: {}
+    };
+  }
+
+  async componentDidMount() {
+    const { id } = this.props.match.params;
+    const res = await axios.get(
+      `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+    );
+
+    const movie = res.data;
+
+    this.setState({
+      title: movie.title,
+      desc: movie.desc,
+      writer: movie.writer,
+      director: movie.director
+    });
+  }
 
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
-    const { title, director, writer, desc, poster } = this.state;
+    const { title, desc, writer, director } = this.state;
 
     //Check for Errors
     if (title === "") {
@@ -30,52 +49,48 @@ class MovieAdd extends Component {
       this.setState({ errors: { writer: "Writer is required" } });
       return;
     }
-    if (poster === "") {
-      this.setState({ errors: { writer: "Poster is required" } });
-      return;
-    }
     if (desc === "") {
       this.setState({ errors: { desc: "Description is required" } });
       return;
     }
-    const newMovie = {
-      id: uuid(),
+
+    const updMovie = {
       title,
-      director,
+      desc,
       writer,
-      poster,
-      desc
+      director
     };
+    const { id } = this.props.match.params;
 
-    // try {
-    //   // Implement DB
-    //   const res = await axios.post(
-    //           "https://jsonplaceholder.typicode.com/users",
-    //           newMovie
-    //         );
-    //   dispatch({ type: "ADD_MOVIE", payload: newMovie });
-    // } catch (e) {
-    //   dispatch({ type: "ADD_MOVIE", payload: newMovie });
-    // }
-    dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    console.log("up movie");
+    console.log(updMovie);
+    //const res = await axios.put(
+    //  `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`,
+    //  updMovie
+    // );
 
+    console.log("update movie");
+    console.log(updMovie);
+    dispatch({
+      type: "UPDATE_MOVIE",
+      // payload: res.data
+      payload: updMovie
+    });
     //clear fields
     this.setState({
       title: "",
-      director: "",
-      writer: "",
-      poster: "",
       desc: "",
+      writer: "",
+      director: "",
       errors: {}
     });
-
     this.props.history.push("/");
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { title, desc, writer, director, poster, errors } = this.state;
+    const { title, desc, writer, director, errors } = this.state;
 
     return (
       <Consumer>
@@ -88,7 +103,7 @@ class MovieAdd extends Component {
                   <div class="row">
                     <div class="col-md-6">
                       <h4>
-                        <i class="fas fa-film"></i> Movies
+                        <i class="fas fa-film"></i> Movies Edit
                       </h4>
                     </div>
                   </div>
@@ -111,6 +126,7 @@ class MovieAdd extends Component {
                               onChange={this.onChange}
                               error={errors.title}
                             />
+
                             <TextInputGroup
                               name="director"
                               label="Director"
@@ -127,14 +143,6 @@ class MovieAdd extends Component {
                               onChange={this.onChange}
                               error={errors.writer}
                             />
-                            <TextInputGroup
-                              name="poster"
-                              label="Poster"
-                              value={poster}
-                              placeHolder="http://www.xxx.com"
-                              onChange={this.onChange}
-                              error={errors.poster}
-                            />
 
                             <TextInputGroup
                               type="text"
@@ -145,11 +153,14 @@ class MovieAdd extends Component {
                               onChange={this.onChange}
                               error={errors.desc}
                             />
-                            <section id="actions" class="py-1 mb-1 bg-light">
+                            <section id="actions" class="py-4 mb-4 bg-light">
                               <div class="container">
                                 <div class="row">
                                   <div class="col-md-3">
-                                    <a href="/" class="btn btn-light btn-block">
+                                    <a
+                                      href="index.html"
+                                      class="btn btn-light btn-block"
+                                    >
                                       <i class="fas fa-arrow-left"></i>Back
                                     </a>
                                   </div>
@@ -176,4 +187,7 @@ class MovieAdd extends Component {
     );
   }
 }
-export default MovieAdd;
+MovieEdit.propTypes = {
+  id: PropTypes.number.isRequired
+};
+export default MovieEdit;

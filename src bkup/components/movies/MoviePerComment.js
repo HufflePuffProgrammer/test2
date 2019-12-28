@@ -1,24 +1,27 @@
 import React, { Component } from "react";
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-class MovieAlone extends Component {
+class MoviePerComment extends Component {
   render() {
-    const { id, title, desc, writer, director, poster } = this.props.movie;
-
+    const { id, title, desc, writer, director } = this.props.movie;
     return (
       <div class="container ">
         <div class="row">
-          <div class="col md-9 py-2">
+          <div class="col md-9 py-6">
             <table class="table">
               <tr>
                 <td width="20%">
-                  <img src={poster} alt={title} class="img-thumbnail"></img>
+                  <img
+                    src="https://static.metacritic.com/images/products/movies/3/e539bd40e3b68ba9e95ad337b30136b2-250h.jpg"
+                    alt="Skywalker Risen"
+                    class="img-thumbnail"
+                  ></img>
                 </td>
                 <td width="80%">
                   <div class="row">
-                    <h4>
-                      <a href={`/movie/detail/${id}`}>{title}</a>
-                    </h4>
+                    <h4>Rise of Skywalker</h4>
                   </div>
                   <div class="row">
                     <strong>Dir: </strong> {director}
@@ -39,7 +42,7 @@ class MovieAlone extends Component {
   }
 }
 
-MovieAlone.propTypes = {
+MoviePerComment.propTypes = {
   movie: PropTypes.object.isRequired
 };
-export default MovieAlone;
+export default MoviePerComment;
