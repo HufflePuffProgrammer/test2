@@ -9,7 +9,6 @@ class MovieEdit extends Component {
     super(props);
     this.state = {
       title: "",
-      desc: "",
       writer: "",
       director: "",
       poster: "",
@@ -25,8 +24,7 @@ class MovieEdit extends Component {
     );
 
     const movie = res.data;
-    console.log("movie");
-    console.log(movie);
+
     this.setState({
       title: movie.title,
       desc: movie.desc,
@@ -71,22 +69,16 @@ class MovieEdit extends Component {
     };
     const { id } = this.props.match.params;
 
-    const res = await axios.put(
-      `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`,
-      updMovie
-    );
-
     try {
       // Implement DB
       const res = await axios.put(
         `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`,
         updMovie
       );
-      dispatch({ type: "UPDATE_MOVIE", payload: updMovie });
+      dispatch({ type: "UPDATE_MOVIE", payload: res.data });
     } catch (e) {
       dispatch({ type: "UPDATE_MOVIE", payload: updMovie });
     }
-    //dispatch({ type: "UPDATE_MOVIE", payload: updMovie });
 
     //clear fields
     this.setState({
@@ -97,17 +89,17 @@ class MovieEdit extends Component {
       poster: "",
       errors: {}
     });
-    this.props.history.push(`/movie/detail/${id}`);
+    // this.props.history.push(`/movie/detail/${id}`);
+    this.props.history.push("/");
   };
 
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    const { id } = this.props.match.params;
     return (
       <Consumer>
         {value => {
-          const { movies, dispatch } = value;
+          const { dispatch } = value;
 
           // BUG when I try to remove the first item of the array.
           // Then access the object's properties. It's undefined.
@@ -194,10 +186,7 @@ class MovieEdit extends Component {
                               <div class="container">
                                 <div class="row">
                                   <div class="col-md-3">
-                                    <a
-                                      href="index.html"
-                                      class="btn btn-light btn-block"
-                                    >
+                                    <a href="/" class="btn btn-light btn-block">
                                       <i class="fas fa-arrow-left"></i>Back
                                     </a>
                                   </div>

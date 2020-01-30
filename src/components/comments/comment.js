@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { Consumer } from "../../context";
 
 import PropTypes from "prop-types";
+import axios from "axios";
 
 class Comment extends Component {
-  onDeleteClick = (id, dispatch) => {
+  onDeleteClick = async (id, dispatch) => {
     try {
-      // await axios.delete(
-      //   `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
-      //  );
+      await axios.delete(
+        `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+      );
       dispatch({ type: "DELETE_COMMENT", payload: id });
     } catch (e) {
       dispatch({ type: "DELETE_COMMENT", payload: id });

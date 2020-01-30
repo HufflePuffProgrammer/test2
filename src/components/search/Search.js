@@ -3,8 +3,6 @@ import { Consumer } from "../../context";
 import Select from "react-select";
 import CommentSearchDetail from "../comments/CommentSearchDetail";
 
-//import axios from "axios";
-
 class Search extends Component {
   constructor() {
     super();
@@ -56,12 +54,9 @@ class Search extends Component {
 
   handlePoorClick = selectedPoorOption => {
     const { value } = selectedPoorOption;
-
     this.setState({ selectedPoorOptionValue: value });
   };
   render() {
-    const { id } = this.props.match.params;
-
     return (
       <Consumer>
         {value => {
@@ -107,6 +102,8 @@ class Search extends Component {
                 comment => comment.institutionalized === true
               );
               break;
+            default:
+              break;
           }
           //Filter by Good Option
           var commentsFilteredbyGoodOption = commentsFilteredbyGenre;
@@ -130,6 +127,8 @@ class Search extends Component {
               commentsFilteredbyGoodOption = commentsFilteredbyGenre.filter(
                 comment => comment.premise_good === true
               );
+              break;
+            default:
               break;
           }
           //Filter by Good Option
@@ -155,6 +154,8 @@ class Search extends Component {
               commentsFilteredbyPoorOption = commentsFilteredbyGoodOption.filter(
                 comment => comment.premise_poor === true
               );
+              break;
+            default:
               break;
           }
           commentsFiltered = commentsFilteredbyPoorOption;
@@ -224,15 +225,7 @@ class Search extends Component {
                     <header
                       id="main-header"
                       className="py-1 bg-success text-white"
-                    >
-                      <div className="container">
-                        <div className="row">
-                          <div className="col-md-6">
-                            <h6></h6>
-                          </div>
-                        </div>
-                      </div>
-                    </header>
+                    ></header>
                   </section>
 
                   <table className="table table-striped">

@@ -2,22 +2,8 @@ import React, { Component } from "react";
 import Comment from "./Comment";
 import { Consumer } from "../../context";
 import MovieAlone from "../movies/MovieAlone";
-import PropTypes from "prop-types";
-//import axios from "axios";
 
 class Comments extends Component {
-  onDeleteClick = (id, dispatch) => {
-    // try {
-    //   await axios.delete(
-    //     `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
-    //   );
-    //   dispatch({ type: "DELETE_MOVIE", payload: id });
-    // } catch (e) {
-
-    //dispatch({ type: "DELETE_COMMENT", payload: id });
-    console.log("Deleted Comment");
-    // }
-  };
   render() {
     const { id } = this.props.match.params;
 
@@ -34,7 +20,7 @@ class Comments extends Component {
 
           return (
             <React.Fragment>
-              <header id="main-header" class="py-0 bg-success text-white">
+              <header id="main-header" className="py-0 bg-success text-white">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-6">
@@ -46,11 +32,11 @@ class Comments extends Component {
                 </div>
               </header>
 
-              <section id="search" class="py-2 mb-6 bg-light">
+              <section id="search" className="py-2 mb-6 bg-light">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-3">
-                      <a href="/" class="btn btn-light btn-block">
+                      <a href="/" className="btn btn-light btn-block">
                         <i className="fas fa-arrow-left"></i>Back
                       </a>
                     </div>
@@ -80,15 +66,7 @@ class Comments extends Component {
                     <header
                       id="main-header"
                       className="py-1 bg-success text-white"
-                    >
-                      <div className="container">
-                        <div className="row">
-                          <div className="col-md-6">
-                            <h6></h6>
-                          </div>
-                        </div>
-                      </div>
-                    </header>
+                    ></header>
                   </section>
 
                   <table className="table table-striped">
@@ -112,7 +90,4 @@ class Comments extends Component {
   }
 }
 
-// Comments.propTypes = {
-//   id: PropTypes.number.isRequired
-// };
 export default Comments;

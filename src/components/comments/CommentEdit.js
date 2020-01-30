@@ -3,7 +3,6 @@ import { Consumer } from "../../context";
 import Checkbox from "../checkboxes/Checkbox";
 import PropTypes from "prop-types";
 import axios from "axios";
-import classnames from "classnames";
 import TextInputGroup from "../layout/TextInputGroup";
 
 class CommentEdit extends Component {
@@ -40,15 +39,17 @@ class CommentEdit extends Component {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
-  onDeleteClick = (id, dispatch) => {
+  //Delete from CommentEdit page.
+  onDeleteClick = async (id, dispatch) => {
     try {
-      // await axios.delete(
-      //   `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
-      //  );
+      await axios.delete(
+        `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+      );
       dispatch({ type: "DELETE_COMMENT", payload: id });
     } catch (e) {
       dispatch({ type: "DELETE_COMMENT", payload: id });
     }
+
     this.props.history.push(`/comments/${this.state.movieid}`);
   };
 
@@ -92,7 +93,6 @@ class CommentEdit extends Component {
     const { id, commentText, checkboxes, movieid, user, title } = this.state;
 
     //Check for Errors
-
     if (title === "") {
       this.setState({ errors: { title: "Title is required" } });
       return;
@@ -146,7 +146,7 @@ class CommentEdit extends Component {
       checkboxes: [],
       errors: {}
     });
-    this.props.history.push("/");
+    this.props.history.push(`/comments/${movieid}`);
   };
 
   handleCheckboxChange(event) {
@@ -436,7 +436,7 @@ class CommentEdit extends Component {
   }
 }
 
-// CommentEdit.propTypes = {
-//   id: PropTypes.number.isRequired
-// };
+CommentEdit.propTypes = {
+  id: PropTypes.number.isRequired
+};
 export default CommentEdit;

@@ -47,17 +47,16 @@ class MovieAdd extends Component {
       desc
     };
 
-    // try {
-    //   // Implement DB
-    //   const res = await axios.post(
-    //           "https://jsonplaceholder.typicode.com/users",
-    //           newMovie
-    //         );
-    //   dispatch({ type: "ADD_MOVIE", payload: newMovie });
-    // } catch (e) {
-    //   dispatch({ type: "ADD_MOVIE", payload: newMovie });
-    // }
-    dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    // Fake post. Needs DB Implement
+    try {
+      const res = await axios.post(
+        "https://jsonplaceholder.typicode.com/users",
+        newMovie
+      );
+      dispatch({ type: "ADD_MOVIE", payload: res.data });
+    } catch (e) {
+      dispatch({ type: "ADD_MOVIE", payload: newMovie });
+    }
 
     //clear fields
     this.setState({

@@ -8,9 +8,9 @@ import axios from "axios";
 class Movie extends Component {
   onDeleteClick = async (id, dispatch) => {
     try {
-      // await axios.delete(
-      //   `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
-      // );
+      await axios.delete(
+        `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
+      );
       dispatch({ type: "DELETE_MOVIE", payload: id });
     } catch (e) {
       dispatch({ type: "DELETE_MOVIE", payload: id });

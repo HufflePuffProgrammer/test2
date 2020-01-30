@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Consumer } from "../../context";
 import Checkbox from "../checkboxes/Checkbox";
 import uuid from "uuid";
-import PropTypes from "prop-types";
+import axios from "axios";
 import TextInputGroup from "../layout/TextInputGroup";
 
 class CommentAdd extends Component {
@@ -89,12 +89,11 @@ class CommentAdd extends Component {
     };
 
     try {
-      // Implement DB
-      // const res = await axios.post(
-      //         "https://jsonplaceholder.typicode.com/users",
-      //         newContact
-      //       );
-      dispatch({ type: "ADD_COMMENT", payload: newComment });
+      const res = await axios.post(
+        "https://jsonplaceholder.typicode.com/users",
+        newComment
+      );
+      dispatch({ type: "ADD_COMMENT", payload: res.data });
     } catch (e) {
       dispatch({ type: "ADD_COMMENT", payload: newComment });
     }
@@ -260,107 +259,16 @@ class CommentAdd extends Component {
       </div>
     );
   };
-  createCheckboxes = () => {
-    const { checkboxes } = this.state;
 
-    return (
-      <div>
-        <Checkbox
-          genre_id="opening_poor"
-          label="Poor Opening"
-          key="opening_poor"
-          isSelected={checkboxes["opening_poor"]}
-          onCheckboxChange={this.handleCheckboxChange}
-        />
-        <Checkbox
-          genre_id="characterpoor"
-          label="Poor Character Arc"
-          key="character_poor"
-          isSelected={checkboxes["character_poor"]}
-          onCheckboxChange={this.handleCheckboxChange}
-        />
-        <Checkbox
-          genre_id="dialogue_poor"
-          label="Poor Dialogue"
-          key="dialogue_poor"
-          isSelected={checkboxes["dialogue_poor"]}
-          onCheckboxChange={this.handleCheckboxChange}
-        />
-        <Checkbox
-          genre_id="dialogue_good"
-          label="Good Dialogue"
-          key="dialogue_good"
-          onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["dialogue_good"]}
-        />
-        <Checkbox
-          genre_id="character_good"
-          label="Good Character Arc"
-          key="character_good"
-          onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["character_good"]}
-        />
-        <Checkbox
-          genre_id="opening_good"
-          label="Good Opening"
-          key="opening_good"
-          onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["opening_good"]}
-        />
-        <Checkbox
-          genre_id="fool_triumphant"
-          label="Fool Triumphant"
-          key="fool_triumphant"
-          onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["fool_triumphant"]}
-        />
-        <Checkbox
-          genre_id="superhero"
-          label="Super Hero"
-          key="superhero"
-          onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["superhero"]}
-        />
-        <Checkbox
-          genre_id="goldenfleece"
-          label="Golden Fleece"
-          key="goldenfleece"
-          onCheckboxChange={this.handleCheckboxChange}
-          isSelected={checkboxes["goldenfleece"]}
-        />
-        <div class="row mt-4"></div>
-
-        <button
-          type="button"
-          className="btn btn-outline-primary mr-2"
-          onClick={this.selectAll}
-        >
-          {" "}
-          Select All
-        </button>
-        <button
-          type="button"
-          className="btn btn-outline-primary mr-2"
-          onClick={this.deselectAll}
-        >
-          Deselect All
-        </button>
-      </div>
-    );
-  };
   onChange = e => this.setState({ [e.target.name]: e.target.value });
   render() {
-    const { id } = this.props.match.params;
     const { title, commentText, user, errors } = this.state;
 
     return (
       <Consumer>
         {value => {
           const { dispatch } = value;
-          //Add later. Show movie title
-          // const moviesPerMovieID = movies.filter(
-          //   movie => Number(movie.id) === Number(id)
-          // );
+
           return (
             <div>
               <header id="main-header" class="py-2 bg-warning text-white">
@@ -430,7 +338,6 @@ class CommentAdd extends Component {
                               />
                             </div>
                           </div>
-
                           <div class="row">
                             <div class="col-sm-12">
                               <TextInputGroup
@@ -448,12 +355,8 @@ class CommentAdd extends Component {
                             <div class="container">
                               <div class="row">
                                 <div class="col-md-3">
-                                  <a
-                                    href="index.html"
-                                    class="btn btn-light btn-block"
-                                  >
-                                    <i class="fas fa-arrow-left"></i> Back to
-                                    Dashboard
+                                  <a href="/" class="btn btn-light btn-block">
+                                    <i class="fas fa-arrow-left"></i> Back
                                   </a>
                                 </div>
                                 <div class="col-md-3">
@@ -478,8 +381,5 @@ class CommentAdd extends Component {
     );
   }
 }
-// CommentAdd.propTypes = {
-//   id: PropTypes.number.isRequired
-// };
 
 export default CommentAdd;

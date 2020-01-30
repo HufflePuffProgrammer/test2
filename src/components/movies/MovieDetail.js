@@ -96,7 +96,7 @@ class MovieDetail extends Component {
                           dispatch
                         )}
                       >
-                        <i className="far fa-trash-alt"></i>Delete
+                        <i className="far fa-trash-alt"></i>No Delete
                       </a>
                     </div>
                     <div className="col-md-3">

@@ -4,9 +4,6 @@ import { Consumer } from "../../context";
 
 class Movies extends Component {
   render() {
-    //const { movies } = this.state;
-    console.log("Loading");
-    console.log(this.state);
     return (
       <Consumer>
         {value => {

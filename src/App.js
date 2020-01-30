@@ -4,7 +4,6 @@ import "./App.css";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Test from "./components/testpages/Test";
 import Search from "./components/search/Search";
 import Movies from "./components/movies/Movies";
 import MovieAdd from "./components/movies/MovieAdd";
@@ -36,7 +35,6 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Movies} />
-                <Route exact path="/testpages/test" component={Test} />
                 <Route exact path="/search" component={Search} />
                 <Route exact path="/movie/detail/:id" component={MovieDetail} />
                 <Route exact path="/movie/add" component={MovieAdd} />
