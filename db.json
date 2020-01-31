@@ -17,10 +17,7 @@
       "character_poor": true,
       "dialogue_poor": true,
       "premise_poor": false,
-      "checkboxes": 
-        {"dude_with_a_problem": true,
-        "golden_fleece": true }
-      ],
+      "checkboxes": { "dude_with_a_problem": true, "golden_fleece": true },
       "comment_text": "Spiderman 1",
       "title": "My Absolute Fave",
       "user": "She-Ra"
