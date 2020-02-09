@@ -5,25 +5,25 @@ class MovieDetailText extends Component {
   render() {
     const { title, desc, writer, director, poster } = this.props.movie;
     return (
-      <div class="container ">
-        <div class="row">
-          <div class="col md-9 py-2">
-            <table class="table">
+      <div className="container ">
+        <div className="row">
+          <div className="col md-9 py-2">
+            <table className="table">
               <tr>
                 <td width="20%">
-                  <img src={poster} alt={title} class="img-thumbnail"></img>
+                  <img src={poster} alt={title} className="img-thumbnail"></img>
                 </td>
                 <td width="80%">
-                  <div class="row">
+                  <div className="row">
                     <h4>{title}</h4>
                   </div>
-                  <div class="row">
+                  <div className="row">
                     <strong>Dir: </strong> {director}
                   </div>
-                  <div class="row">
+                  <div className="row">
                     <strong>Writer: </strong> {writer}
                   </div>
-                  <div class="row">
+                  <div className="row">
                     <strong>Summary: </strong> {desc}
                   </div>
                 </td>

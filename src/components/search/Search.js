@@ -71,61 +71,65 @@ class Search extends Component {
           // BEGIN
           var commentsFiltered = comments;
           var commentsFilteredbyGenre = comments;
+
           switch (selectedGenreOptionValue) {
             case "superhero":
               commentsFilteredbyGenre = commentsFiltered.filter(
-                comment => comment.superhero === true
+                comment => comment.checkboxes.super_hero === true
               );
+
               break;
             case "dude_with_a_problem":
               commentsFilteredbyGenre = commentsFiltered.filter(
-                comment => comment.dude_with_a_problem === true
+                comment => comment.checkboxes.dude_with_a_problem === true
               );
+
               break;
             case "golden_fleece":
               commentsFilteredbyGenre = commentsFiltered.filter(
-                comment => comment.golden_fleece === true
+                comment => comment.checkboxes.golden_fleece === true
               );
               break;
             case "fool_triumphant":
               commentsFilteredbyGenre = commentsFiltered.filter(
-                comment => comment.fool_triumphant === true
+                comment => comment.checkboxes.fool_triumphant === true
               );
               break;
             case "buddy_love":
               commentsFilteredbyGenre = commentsFiltered.filter(
-                comment => comment.buddy_love === true
+                comment => comment.checkboxes.buddy_love === true
               );
               break;
             case "institutionalized":
               commentsFilteredbyGenre = commentsFiltered.filter(
-                comment => comment.institutionalized === true
+                comment => comment.checkboxes.institutionalized === true
               );
               break;
             default:
               break;
           }
+
           //Filter by Good Option
           var commentsFilteredbyGoodOption = commentsFilteredbyGenre;
           switch (selectedGoodOptionValue) {
             case "opening_good":
               commentsFilteredbyGoodOption = commentsFilteredbyGenre.filter(
-                comment => comment.opening_good === true
+                comment => comment.checkboxes.opening_good === true
               );
               break;
             case "character_good":
               commentsFilteredbyGoodOption = commentsFilteredbyGenre.filter(
-                comment => comment.character_good === true
+                comment => comment.checkboxes.character_good === true
               );
               break;
             case "dialogue_good":
               commentsFilteredbyGoodOption = commentsFilteredbyGenre.filter(
-                comment => comment.dialogue_good === true
+                comment => comment.checkboxes.dialogue_good === true
               );
               break;
             case "premise_good":
               commentsFilteredbyGoodOption = commentsFilteredbyGenre.filter(
-                comment => comment.premise_good === true
+                comment => comment.checkboxes.premise_good === true
               );
               break;
             default:
@@ -137,22 +141,22 @@ class Search extends Component {
           switch (selectedPoorOptionValue) {
             case "opening_poor":
               commentsFilteredbyPoorOption = commentsFilteredbyGoodOption.filter(
-                comment => comment.opening_poor === true
+                comment => comment.checkboxes.opening_poor === true
               );
               break;
             case "character_poor":
               commentsFilteredbyPoorOption = commentsFilteredbyGoodOption.filter(
-                comment => comment.character_poor === true
+                comment => comment.checkboxes.character_poor === true
               );
               break;
             case "dialogue_poor":
               commentsFilteredbyPoorOption = commentsFilteredbyGoodOption.filter(
-                comment => comment.dialogue_poor === true
+                comment => comment.checkboxes.dialogue_poor === true
               );
               break;
             case "premise_poor":
               commentsFilteredbyPoorOption = commentsFilteredbyGoodOption.filter(
-                comment => comment.premise_poor === true
+                comment => comment.checkboxes.premise_poor === true
               );
               break;
             default:
@@ -163,7 +167,7 @@ class Search extends Component {
 
           return (
             <React.Fragment>
-              <header id="main-header" class="py-0 bg-success text-white">
+              <header id="main-header" className="py-0 bg-success text-white">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-3">
@@ -175,7 +179,7 @@ class Search extends Component {
                 </div>
               </header>
 
-              <section id="search" class="py-2 mb-6 bg-light">
+              <section id="search" className="py-2 mb-6 bg-light">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-3">
@@ -187,7 +191,7 @@ class Search extends Component {
                 </div>
               </section>
 
-              <section id="search" class="py-2 mb-6 bg-light">
+              <section id="search" className="py-2 mb-6 bg-light">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-4">
@@ -229,7 +233,7 @@ class Search extends Component {
                   </section>
 
                   <table className="table table-striped">
-                    <thead class="thead-success">
+                    <thead className="thead-success">
                       <th width="50%">Comments</th>
                       <th width="20%">Poster</th>
                       <th width="30%">Movie</th>

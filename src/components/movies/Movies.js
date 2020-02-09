@@ -11,28 +11,31 @@ class Movies extends Component {
 
           return (
             <React.Fragment>
-              <section id="search" class="py-2 mb-2 bg-light">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-3">
-                      <a href="/movie/add" class="btn btn-primary btn-block">
-                        <i class="fas fa-plus"></i> Add Movie
+              <section id="search" className="py-2 mb-2 bg-light">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-3">
+                      <a
+                        href="/movie/add"
+                        className="btn btn-primary btn-block"
+                      >
+                        <i className="fas fa-plus"></i> Add Movie
                       </a>
                     </div>
                     <div className="col-md-3">
                       <a href={`/search`} className="btn btn-info btn-block">
-                        <i class="fas fa-search"></i>Search
+                        <i className="fas fa-search"></i>Search
                       </a>
                     </div>
                   </div>
                 </div>
               </section>
 
-              <div class="container">
-                <div class="row">
-                  <div class="col md-9">
-                    <table class="table table-striped">
-                      <thead class="thead-dark">
+              <div className="container">
+                <div className="row">
+                  <div className="col md-9">
+                    <table className="table table-striped">
+                      <thead className="thead-dark">
                         <th width="20%">Poster</th>
                         <th width="40%">Movie</th>
                         <th width="40%">Comments</th>

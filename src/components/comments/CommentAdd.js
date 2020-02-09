@@ -1,26 +1,18 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
-import Checkbox from "../checkboxes/Checkbox";
+import Checkbox from "../Checkboxes/Checkbox";
 import uuid from "uuid";
 import axios from "axios";
 import TextInputGroup from "../layout/TextInputGroup";
+import { Link } from "react-router-dom";
 
 class CommentAdd extends Component {
   constructor(props) {
     super(props);
+    const { id } = this.props.match.params;
 
-    this.state = {
-      title: "",
-      user: "",
-      commentText: "",
-      checkboxes: [],
-      movieid: this.props.match.params,
-      errors: {}
-    };
-    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
-  }
-  componentDidMount() {
-    let listCheckboxes = [];
+    //initialize the checkboxes with keys value to false;
+    var listCheckboxes = [];
     listCheckboxes["opening_poor"] = false;
     listCheckboxes["premise_poor"] = false;
     listCheckboxes["character_poor"] = false;
@@ -35,17 +27,19 @@ class CommentAdd extends Component {
     listCheckboxes["golden_fleece"] = false;
     listCheckboxes["buddy_love"] = false;
     listCheckboxes["institutionalized"] = false;
-    const { id } = this.props.match.params;
+    listCheckboxes["superhero"] = false;
 
-    this.setState({
+    this.state = {
       title: "",
       user: "",
+      commentText: "",
       checkboxes: listCheckboxes,
       movieid: id,
-      commentText: ""
-      //isSelectedBox: false
-    });
+      errors: {}
+    };
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
+
   onSubmit = async (dispatch, e) => {
     e.preventDefault();
     const { commentText, checkboxes, movieid, user, title } = this.state;
@@ -70,22 +64,7 @@ class CommentAdd extends Component {
       comment_text: commentText,
       title,
       user,
-
-      opening_poor: checkboxes["opening_poor"],
-      premise_poor: checkboxes["premise_poor"],
-      character_poor: checkboxes["character_poor"],
-      dialogue_poor: checkboxes["dialogue_poor"],
-
-      opening_good: checkboxes["opening_good"],
-      premise_good: checkboxes["premise_good"],
-      character_good: checkboxes["character_good"],
-      dialogue_good: checkboxes["dialogue_good"],
-
-      dude_with_a_problem: checkboxes["dude_with_a_problem"],
-      golden_fleece: checkboxes["golden_fleece"],
-      buddy_love: checkboxes["buddy_love"],
-      institutionalized: checkboxes["institutionalized"],
-      superhero: checkboxes["superhero"]
+      checkboxes
     };
 
     try {
@@ -103,6 +82,7 @@ class CommentAdd extends Component {
       title: "",
       user: "",
       commentText: "",
+      checkboxes: {},
       errors: {}
     });
 
@@ -355,9 +335,12 @@ class CommentAdd extends Component {
                             <div class="container">
                               <div class="row">
                                 <div class="col-md-3">
-                                  <a href="/" class="btn btn-light btn-block">
-                                    <i class="fas fa-arrow-left"></i> Back
-                                  </a>
+                                  <Link
+                                    to="/"
+                                    className="btn btn-light btn-block"
+                                  >
+                                    <i className="fas fa-arrow-left"></i>Back
+                                  </Link>
                                 </div>
                                 <div class="col-md-3">
                                   <input

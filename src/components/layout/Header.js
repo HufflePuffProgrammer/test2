@@ -16,8 +16,10 @@ const Header = props => {
         <div>
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <i className="fas fa-home" />
-              Home1
+              <Link to="/" className="nav-link">
+                <i className="fas fa-home" />
+                Home
+              </Link>
             </li>
 
             <li className="nav-item">

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import MovieDetailText from "./MovieDetailText";
-import PropTypes from "prop-types";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class MovieDetail extends Component {
   constructor(props) {
@@ -34,14 +34,6 @@ class MovieDetail extends Component {
   }
 
   onDeleteClick = async (id, dispatch) => {
-    // try {
-    //   await axios.delete(
-    //     `https://my-json-server.typicode.com/hufflepuffprogrammer/test2/movies/${id}`
-    //   );
-    //dispatch({ type: "DELETE_MOVIE", payload: id });
-    // } catch (e) {
-    //   dispatch({ type: "DELETE_MOVIE", payload: id });
-    // }
     dispatch({ type: "DELETE_MOVIE", payload: id });
     this.props.history.push("/");
   };
@@ -58,7 +50,7 @@ class MovieDetail extends Component {
           );
           return (
             <div>
-              <header id="main-header" class="py-0 bg-success text-white">
+              <header id="main-header" className="py-0 bg-success text-white">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-6">
@@ -70,41 +62,41 @@ class MovieDetail extends Component {
                 </div>
               </header>
 
-              <section id="search" class="py-2 mb-6 bg-light">
+              <section id="search" className="py-2 mb-6 bg-light">
                 <div className="container">
                   <div className="row">
                     <div className="col-md-3">
-                      <a href="/" class="btn btn-light btn-block">
-                        <i className="fas fa-arrow-left"></i> Back
-                      </a>
+                      <Link to="/" className="btn btn-light btn-block">
+                        <i className="fas fa-arrow-left"></i>Back
+                      </Link>
                     </div>
                     <div className="col-md-3">
-                      <a
-                        href={`/movie/edit/${movieID}`}
+                      <Link
+                        to={`/movie/edit/${movieID}`}
                         className="btn btn-warning btn-block"
                       >
                         <i className="fas fa-pencil-alt"></i>Edit
-                      </a>
+                      </Link>
                     </div>
                     <div className="col-md-3">
-                      <a
-                        href="#"
-                        className="btn btn-danger btn-block "
+                      <Link
+                        to="#"
+                        className="btn btn-danger btn-block"
                         onClick={this.onDeleteClick.bind(
                           this,
                           movieID,
                           dispatch
                         )}
                       >
-                        <i className="far fa-trash-alt"></i>No Delete
-                      </a>
+                        <i className="far fa-trash-alt"></i>Delete
+                      </Link>
                     </div>
                     <div className="col-md-3">
                       <a
-                        href={`/movie/add/`}
+                        href={`/comments/add/${movieID}`}
                         className="btn btn-success btn-block"
                       >
-                        <i className="fas fa-plus"></i>Add
+                        <i className="fas fa-plus"></i>Add Comment
                       </a>
                     </div>
                   </div>
@@ -124,7 +116,5 @@ class MovieDetail extends Component {
     );
   }
 }
-MovieDetail.propTypes = {
-  id: PropTypes.number.isRequired
-};
+
 export default MovieDetail;

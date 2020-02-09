@@ -21,7 +21,7 @@
       },
       "comment_text": "Spiderman 1",
       "title": "My Absolute Fave",
-      "user": "She-Ra"
+      "user": "Dr Crusher"
     },
     {
       "id": 2,
@@ -44,7 +44,7 @@
       },
       "comment_text": "Spiderman 2",
       "title": "Could have been better",
-      "user": "Edward Norton"
+      "user": "Jean Luc Picard"
     },
     {
       "id": 3,
@@ -90,7 +90,7 @@
       },
       "comment_text": "Spiderman 4",
       "title": "Hold Me",
-      "user": "Meatloaf"
+      "user": "Number 1"
     },
     {
       "id": 5,
@@ -112,8 +112,8 @@
         "premise_poor": true
       },
       "comment_text": "SpiderVerse was the best",
-      "title": "Too PC 4 me",
-      "user": "Bill Burr"
+      "title": "Let's talk about your feelings",
+      "user": "Deanna Troy"
     },
     {
       "id": 6,
@@ -134,15 +134,15 @@
         "dialogue_poor": false,
         "premise_poor": false
       },
-      "comment_text": "Hailey is one hawt chick",
+      "comment_text": "Hailey is my new BFF",
       "title": "Hold my beer",
-      "user": "Luis C.K."
+      "user": "Wesley Crusher"
     },
     {
       "id": 7,
       "movieid": 4,
-      "superhero": false,
       "checkboxes": {
+        "superhero": true,
         "dude_with_a_problem": true,
         "golden_fleece": true,
         "fool_triumphant": true,
@@ -157,7 +157,7 @@
         "dialogue_poor": true,
         "premise_poor": false
       },
-      "comment_text": "Where are the sexy shower scenes?",
+      "comment_text": "Needs more humor",
       "title": "I <3 it",
       "user": "Whitney Cummings"
     }

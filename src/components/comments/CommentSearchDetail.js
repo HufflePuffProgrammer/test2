@@ -104,7 +104,7 @@ class CommentSearchDetail extends Component {
       <Consumer>
         {value => {
           const { comment, movieid } = this.props;
-          const { title } = comment;
+          const { title, checkboxes } = comment;
 
           return (
             <React.Fragment>
@@ -118,24 +118,24 @@ class CommentSearchDetail extends Component {
                   <div class="row">
                     <div class="col">
                       <small class="text-muted">Genre: </small>
-                      {this.commentGenreText(comment)}
+                      {this.commentGenreText(checkboxes)}
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col">
                       <small class="mr-1 text-muted">Good:</small>{" "}
-                      {this.commentCharsGoodText(comment)}{" "}
+                      {this.commentCharsGoodText(checkboxes)}{" "}
                     </div>
                   </div>
                   <div class="row">
                     <div class="col">
                       <small class="mr-1 text-muted">Poor:</small>{" "}
-                      {this.commentCharsPoorText(comment)}
+                      {this.commentCharsPoorText(checkboxes)}
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col">{this.commentText(comment)}</div>
+                    <div class="col">{this.commentText(checkboxes)}</div>
                   </div>
                 </td>
                 <MovieSearchDetail key={movieid} movieid={movieid} />
