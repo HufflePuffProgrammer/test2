@@ -12,7 +12,9 @@ class MovieSearchDetail extends Component {
         {value => {
           const { movies } = value;
           // Filter the movie and grab the first one.
+
           const newMovie = movies.filter(movie => movie.id === movieid);
+          console.log(newMovie);
           const { title, director, writer, desc, poster } = newMovie[0];
 
           return (
